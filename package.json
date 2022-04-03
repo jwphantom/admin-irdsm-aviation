@@ -24,6 +24,7 @@
     "@angular/router": "~13.1.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "enhanced-resolve": "^5.9.2",
     "express": "^4.17.3",
     "firebase": "^9.6.10",
     "i18n": "^0.14.2",
