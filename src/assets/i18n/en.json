@@ -5,7 +5,9 @@
         "about": "About",
         "contact": "Contact",
         "submission" : "Submission",
-        "formation": "Training"
+        "formation": "Training",
+        "logout" : "Sign Out",
+        "login" : "Sign In"
     },
     "footer": {
         "title": "Civil Aviation Training",

@@ -1,4 +1,4 @@
-export class Submission {
+export interface Submission {
   program: string;
   concours: string;
   fname: string;

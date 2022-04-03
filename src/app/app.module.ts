@@ -31,6 +31,15 @@ import { MenuComponent } from './static/menu/menu.component';
 import { ScrollTopComponent } from './static/scroll-top/scroll-top.component';
 import { PageTitleComponent } from './static/page-title/page-title.component';
 import { LanguageComponent } from './static/language/language.component';
+import { SubmissionComponent } from './pages/submission/submission.component';
+
+//Material Design
+import { MaterialExampleModule } from 'material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+//authguard
+import { AuthGuard } from './shared/auth.guard';
+import { SubmissionService } from './services/submission.service';
 
 
 @NgModule({
@@ -44,11 +53,15 @@ import { LanguageComponent } from './static/language/language.component';
     MenuComponent,
     ScrollTopComponent,
     PageTitleComponent,
-    LanguageComponent
+    LanguageComponent,
+    SubmissionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MaterialExampleModule,
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
@@ -64,7 +77,7 @@ import { LanguageComponent } from './static/language/language.component';
     }),
 
   ],
-  providers: [LocaleService],
+  providers: [LocaleService, AuthGuard, SubmissionService],
   bootstrap: [AppComponent,
   ]
 })

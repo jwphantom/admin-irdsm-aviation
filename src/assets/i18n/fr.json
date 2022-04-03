@@ -5,7 +5,10 @@
         "about": "A propos",
         "contact": "Contact",
         "submission" : "Soumission",
-        "formation": "Formations"
+        "formation": "Formations",
+        "logout" : "Déconnecter",
+        "login": "Connexion"
+
     },
 
     "footer": {

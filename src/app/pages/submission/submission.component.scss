@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+}
+
+th {
+    font-weight: 600;
+    background-color: #343a40;
+    color: white;
+}
+
+td {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.mat-row {
+    height: auto;
+}
+
+.mat-header-cell {
+    padding: 20px 20px 20px 20px;
+}
+.mat-cell {
+    padding: 20px 20px 20px 20px;
+}

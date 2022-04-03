@@ -63,6 +63,11 @@ export class AuthService {
       });
   }
 
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return !!Object.keys(user).length ? true : false;
+  }
+
   // Sign out 
   SignOut() {
     return this.afAuth.signOut().then(() => {
