@@ -18,7 +18,7 @@ export class SubmissionComponent implements OnInit {
   sub: Submission[] = [];
   submissionSubscription: Subscription | undefined;
 
-  selectConcours: string = "all";
+  selectConcours: any = "all";
 
   listConcours: any[] | undefined;
 
@@ -49,7 +49,7 @@ export class SubmissionComponent implements OnInit {
 
   }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
     this.storeAdmission()
@@ -75,7 +75,7 @@ export class SubmissionComponent implements OnInit {
 
   changeDateconcours(date: Event) {
 
-    this.submission.getList((date.target as HTMLInputElement).value);
+    this.submission.getList(date);
 
   }
 

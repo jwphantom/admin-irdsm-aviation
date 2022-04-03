@@ -33,8 +33,14 @@ import { PageTitleComponent } from './static/page-title/page-title.component';
 import { LanguageComponent } from './static/language/language.component';
 import { SubmissionComponent } from './pages/submission/submission.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 //Material Design
 import { MaterialExampleModule } from 'material.module';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //authguard
@@ -63,7 +69,9 @@ import { FourOhFourComponent } from './pages/four-oh-four/four-oh-four.component
     AppRoutingModule,
     MaterialExampleModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     FormsModule,
+    MatNativeDateModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,

@@ -9,8 +9,7 @@ import { AuthGuard } from "./shared/auth.guard";
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
-  { path: 'submission', component: SubmissionComponent, canActivate: [AuthGuard] },
-  { path: '', component: SubmissionComponent, canActivate: [AuthGuard] },
+  { path: '', component: SubmissionComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' },
 

@@ -3,7 +3,7 @@
         <nav>
             <ul>
 
-                <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/submission">{{ 'nav.submission' |
+                <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/">{{ 'nav.submission' |
                         translate }}</a></li>
                 <li style="cursor: pointer;" *ngIf="!isLoggedIn"><a routerLink="/sign-in" title="">{{ 'nav.login' |
                         translate }}</a></li>

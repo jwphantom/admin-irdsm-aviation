@@ -21,7 +21,7 @@ export class SubmissionService {
   }
 
 
-  async getList(dateC: string) {
+  async getList(dateC: Event) {
 
     this.http
       .get<any[]>(`${GlobalConstants.apiURL}/submission/list/${dateC}`)
