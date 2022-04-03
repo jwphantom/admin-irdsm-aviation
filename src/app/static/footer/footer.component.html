@@ -1,0 +1,56 @@
+<!-- Footer -->
+<footer id="footer">
+    <div class="footer-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="icon-box effect small clean">
+                        <div class="icon">
+                            <a href="#"><i class="icon-clock"></i></a>
+                        </div>
+                        <h3>{{ 'footer.horaire_travail' | translate }} </h3>
+                        <p><strong>{{ 'footer.lundi' | translate }} - {{ 'footer.vendredi' | translate }}</strong>
+                            <br>08:00 - 16:00</p>
+                        <p><strong>{{ 'footer.samedi' | translate }}</strong>
+                            <br>09:00 - 13:00</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box effect small clean">
+                        <div class="icon">
+                            <a href="#"><i class="fas fa-map-marker-alt"></i></a>
+                        </div>
+                        <h3>{{ 'footer.location' | translate }}</h3>
+                        <p><strong>{{ 'footer.adresse' | translate }}:</strong>
+                            <br> {{ localisation }}
+                            <br>
+                            <br>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box effect small clean">
+                        <div class="icon">
+                            <a href="#"><i class="icon-phone"></i></a>
+                        </div>
+                        <h3>{{ 'footer.contact' | translate }}</h3>
+                        <p><strong>{{ 'footer.contact' | translate }}:</strong>
+                            <br>{{ phone1 }}
+                            <br>{{ phone2 }}
+                        </p>
+                        <p><strong>{{ 'footer.mail' | translate }}:</strong>
+                            <br>{{ email }}
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-content">
+        <div class="container">
+            <div class="copyright-text text-center">&copy; {{ year }} {{ appname }} - {{ 'footer.title' | translate }}. {{ 'footer.copyright' | translate }} - v {{ version }} </div>
+        </div>
+    </div>
+</footer>
+<!-- end: Footer -->

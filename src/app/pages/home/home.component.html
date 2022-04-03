@@ -1,0 +1,163 @@
+<!-- Body Inner -->
+<div class="body-inner">
+
+    <!-- Header -->
+    <header id="header" data-transparent="true" data-fullwidth="true" class="dark submenu-light">
+        <div class="header-inner">
+            <div class="container">
+                <!--Logo-->
+                <div id="logo">
+                    <a routerLink="/home">
+                        <img src="assets/images/logo.png" class="logo-default">
+                        <img src="assets/images/logo.png" class="logo-dark">
+
+                    </a>
+                </div>
+                <!--End: Logo-->
+                <!--Header Extras-->
+                <app-language></app-language>
+                <!--end: Header Extras-->
+                <!--Navigation Resposnive Trigger-->
+                <div id="mainMenu-trigger"> <a class="lines-button x"><span class="lines"></span></a> </div>
+                <!--end: Navigation Resposnive Trigger-->
+                <!--Navigation-->
+                <app-menu></app-menu>
+                <!--end: Navigation-->
+            </div>
+        </div>
+    </header>
+    <!-- end: Header -->
+
+    <!-- end: Header -->
+    <!-- Inspiro Slider -->
+    <div id="slider" class="inspiro-slider slider-fullscreen dots-creative" data-fade="true">
+        <!-- Slide 1 -->
+        <div class="slide kenburns" data-bg-image="assets/images/home/bg.jpg">
+            <div class="bg-overlay"></div>
+            <div class="container">
+                <div class="slide-captions text-center text-light">
+                    <!-- Captions -->
+                    <h2>{{ 'home.s01_t'|translate }}</h2>
+                    <p>{{ 'home.s01_d'|translate }}</p>
+                    <div><a routerLink="/program-pilote" class="btn scroll-to">{{ 'home.s01_l'|translate }}</a></div>
+
+                    <!-- end: Captions -->
+                </div>
+            </div>
+        </div>
+
+        <div class="slide kenburns" data-bg-image="assets/images/home/campus.jpg">
+            <div class="bg-overlay"></div>
+            <div class="container">
+                <div class="slide-captions text-center text-light">
+                    <!-- Captions -->
+                    <h2>{{ 'home.s02_t'|translate }}</h2>
+                    <p>{{ 'home.s02_d'|translate }}</p>
+                    <div><a routerLink="/formation" class="btn scroll-to">{{ 'home.s02_l'|translate }}</a></div>
+
+                    <!-- end: Captions -->
+                </div>
+            </div>
+        </div>
+
+        <div class="slide kenburns" data-bg-image="assets/images/home/books.jpg">
+            <div class="bg-overlay"></div>
+            <div class="container">
+                <div class="slide-captions text-center text-light">
+                    <!-- Captions -->
+                    <h2>{{ 'home.s03_t'|translate }}</h2>
+                    <p>{{ 'home.s03_d'|translate }}</p>
+                    <div><a routerLink="/formation" class="btn scroll-to">{{ 'home.s03_l'|translate }}</a></div>
+
+                    <!-- end: Captions -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--end: Inspiro Slider -->
+
+    <!-- WELCOME -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <h4 class="m-b-10">Description</h4>
+                    <h2 class="m-b-10">{{ 'home.a_t'|translate }} </h2>
+                    <p>{{ 'home.a_d'|translate }}
+                    </p>
+                    <a routerLink="/about" class="btn btn-dark"><span class="btn-label"><i
+                                class="fa fa-check"></i></span> {{ 'about.title'|translate }}
+                    </a>
+                </div>
+                <div class="col-lg-6 offset-1 m-t-50">
+                    <video src="../../../assets/images/about/preview.mp4" controls></video>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- end: WELCOME -->
+
+    <!-- Call to action -->
+    <section class="background-colored text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9r">
+                    <h3 class="text-light">{{ 'home.start'|translate }} <span class="iconify"
+                            data-icon="emojione-v1:smiling-face-with-sunglasses" data-inline="false"></span> </h3>
+                    <a routerLink="/contact" class="btn btn-light btn-outline btn-rounded">{{ 'home.date'|translate
+                        }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end: Call to action -->
+
+
+    <section>
+        <div class="container">
+            <div class="heading-text heading-section text-center">
+                <h2>{{ 'home.skill'|translate }}</h2>
+                <p>{{ 'home.skill_d'|translate }}</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="icon-box effect medium border center">
+                        <div class="icon">
+                            <a href="#"><i class="far fa-lightbulb"></i></a>
+                        </div>
+                        <h3>{{ 'home.p01_title'|translate }}</h3>
+                        <p>{{ 'home.p01_desc'|translate }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="icon-box effect medium border center">
+                        <div class="icon">
+                            <a href="#"><i class="fa fa-trophy"></i></a>
+                        </div>
+                        <h3>{{ 'home.p02_title'|translate }}</h3>
+                        <p>{{ 'home.p02_desc'|translate }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="icon-box effect medium border center">
+                        <div class="icon">
+                            <a href="#"><i class="fa fa-thumbs-up"></i></a>
+                        </div>
+                        <h3>{{ 'home.p03_title'|translate }}</h3>
+                        <p>{{ 'home.p03_desc'|translate }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <app-partner></app-partner>
+
+    <app-footer></app-footer>
+</div>
+<!-- end: Body Inner -->
+
+<!-- Scroll top -->
+<app-scroll-top></app-scroll-top>
