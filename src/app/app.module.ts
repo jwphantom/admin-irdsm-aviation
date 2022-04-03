@@ -40,6 +40,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //authguard
 import { AuthGuard } from './shared/auth.guard';
 import { SubmissionService } from './services/submission.service';
+import { FourOhFourComponent } from './pages/four-oh-four/four-oh-four.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { SubmissionService } from './services/submission.service';
     ScrollTopComponent,
     PageTitleComponent,
     LanguageComponent,
-    SubmissionComponent
+    SubmissionComponent,
+    FourOhFourComponent,
   ],
   imports: [
     BrowserModule,
