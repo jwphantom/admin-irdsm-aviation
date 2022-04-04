@@ -23,7 +23,7 @@ export class SubmissionComponent implements OnInit {
   listConcours: any[] | undefined;
 
   //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  displayedColumns: string[] = ['no', 'fname', 'phone', 'email', 'age', 'programs', 'diplome'];
+  displayedColumns: string[] = ['no', 'fname', 'phone', 'email', 'sexe', 'age', 'programs', 'diplome', 'center'];
 
   dataSource = new MatTableDataSource<Submission>([]);
 
@@ -36,7 +36,6 @@ export class SubmissionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.title.setTitle("IRDSM AVIATION - Réponses au formulaire");
 
     //this.storeAdmission()

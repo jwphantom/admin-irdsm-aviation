@@ -55,7 +55,7 @@ export class AuthService {
 
         localStorage.setItem('user', JSON.stringify(result.user));
 
-        this.router.navigate(['submission']);
+        this.router.navigate(['']);
 
       })
       .catch((error) => {
@@ -64,8 +64,22 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
+    let r: boolean;
+
     const user = JSON.parse(localStorage.getItem('user')!);
-    return !!Object.keys(user).length ? true : false;
+    return user && !!Object.keys(user).length ? true : false
+
+    // if (!user) {
+    //   r = false; 
+
+    //   console.log('test1')
+
+    //   localStorage.setItem('user', '{}');
+    //   console.log(Object.keys(user).length);
+    // }
+    // return r;
+
+    //return !!Object.keys(user).length ? true : false;
   }
 
   // Sign out 
