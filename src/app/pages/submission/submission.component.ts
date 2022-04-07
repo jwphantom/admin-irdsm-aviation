@@ -23,7 +23,7 @@ export class SubmissionComponent implements OnInit {
   listConcours: any[] | undefined;
 
   //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  displayedColumns: string[] = ['no', 'fname', 'phone', 'email', 'sexe', 'age', 'programs', 'diplome', 'center'];
+  displayedColumns: string[] = ['no', 'fname', 'phone', 'email', 'sexe', 'age', 'ville', 'programs', 'diplome', 'center'];
 
   dataSource = new MatTableDataSource<Submission>([]);
 
