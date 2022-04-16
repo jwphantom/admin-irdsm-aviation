@@ -27,91 +27,195 @@
 
 
     <section id="page-content">
-        <div class="container">
-            <div class="row">
+        <div style="padding: 20px;">
+            <div class="">
                 <div class="content col-lg-12">
-                    <h4>Réponses au formulaire ({{dataSource.filteredData.length}}) </h4>
+                    <h4>Réponses aux formulaires ({{dataSource.filteredData.length}}) </h4>
                     <select (ngModelChange)="changeDateconcours($event)" [(ngModel)]="selectConcours">
                         <option value="all">Tous les concours </option>
                         <option *ngFor="let l of listConcours" value="{{l.name}}">{{ l.name }}
                         </option>
                     </select>
                     <br><br>
+
                     <div class="table-responsive">
+                        <div class="d-flex flex-row-reverse">
+                            <div class="p-2">
+                                <a class="btn" data-target="#modalExportXls" data-toggle="modal" href="#">Export
+                                    Data
+                                </a>
+                            </div>
 
-                        <div class="mat-elevation-z8">
-                            <table mat-table [dataSource]="dataSource">
-
-                                <ng-container matColumnDef="no">
-                                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                                    <td mat-cell *matCellDef="let element let i = index">
-                                        {{paginator.pageIndex * paginator.pageSize + i + 1}}
-                                    </td>
-                                </ng-container>
-
-                                <ng-container matColumnDef="fname">
-                                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.fname}} </td>
-                                </ng-container>
-
-                                <ng-container matColumnDef="phone">
-                                    <th mat-header-cell *matHeaderCellDef> Phone </th>
-                                    <td mat-cell *matCellDef="let element"> <a href="tel:{{element.phone}}">
-                                            {{element.phone}}
-                                        </a> </td>
-                                </ng-container>
-
-                                <ng-container matColumnDef="email">
-                                    <th mat-header-cell *matHeaderCellDef> Email </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-                                </ng-container>
-
-                                <ng-container matColumnDef="sexe">
-                                    <th mat-header-cell *matHeaderCellDef> Sexe </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.sexe}} </td>
-                                </ng-container>
-
-                                <ng-container matColumnDef="age">
-                                    <th mat-header-cell *matHeaderCellDef> Age </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.age}} </td>
-                                </ng-container>
-
-                                <ng-container matColumnDef="ville">
-                                    <th mat-header-cell *matHeaderCellDef> Ville </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.ville}} </td>
-                                </ng-container>
-
-                                <ng-container matColumnDef="programs">
-                                    <th mat-header-cell *matHeaderCellDef> Programme </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.program}} </td>
-                                </ng-container>
-
-                                <ng-container matColumnDef="diplome">
-                                    <th mat-header-cell *matHeaderCellDef> Diplome </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.diplome}} </td>
-                                </ng-container>
-
-                                <ng-container matColumnDef="center">
-                                    <th mat-header-cell *matHeaderCellDef> Centre de formation </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.center}} </td>
-                                </ng-container>
-
-
-                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                            </table>
-
-                            <mat-paginator [pageSizeOptions]="[10, 30, 50, 100, 200]" showFirstLastButtons
-                                aria-label="Select page of periodic elements">
-                            </mat-paginator>
                         </div>
+
+
+                        <table>
+                            <div class="mat-elevation-z8" #userTable>
+                                <table mat-table [dataSource]="dataSource">
+
+                                    <ng-container matColumnDef="no">
+                                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                                        <td mat-cell *matCellDef="let element let i = index">
+                                            {{paginator.pageIndex * paginator.pageSize + i + 1}}
+                                        </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="fname">
+                                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.fname}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="phone">
+                                        <th mat-header-cell *matHeaderCellDef> Phone </th>
+                                        <td mat-cell *matCellDef="let element"> <a href="tel:{{element.phone}}">
+                                                {{element.phone}}
+                                            </a> </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="email">
+                                        <th mat-header-cell *matHeaderCellDef> Email </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="sexe">
+                                        <th mat-header-cell *matHeaderCellDef> Sex </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.sexe}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="age">
+                                        <th mat-header-cell *matHeaderCellDef> Age </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="ville">
+                                        <th mat-header-cell *matHeaderCellDef> Ville </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.ville}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="programs">
+                                        <th mat-header-cell *matHeaderCellDef> Programme </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.program}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="diplome">
+                                        <th mat-header-cell *matHeaderCellDef> Diplome </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.diplome}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="center">
+                                        <th mat-header-cell *matHeaderCellDef> Centre </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.center}} </td>
+                                    </ng-container>
+
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+
+                                <mat-paginator [pageSizeOptions]="[10, 30, 50, 100, 200]" showFirstLastButtons
+                                    aria-label="Select page of periodic elements">
+                                </mat-paginator>
+                            </div>
+                        </table>
+
+
+
+                        <table style="display: none;" class="table" #submissionTable>
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Sex</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Ville</th>
+                                    <th scope="col">Programme</th>
+                                    <th scope="col">Diplome</th>
+                                    <th scope="col">Centre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let rep of sub let i = index">
+                                    <td>{{ compteur+i }} </td>
+                                    <td>{{ rep.fname }}</td>
+                                    <td>{{ rep.phone }}</td>
+                                    <td>{{ rep.email }}</td>
+                                    <td>{{ rep.sexe }}</td>
+                                    <td>{{ rep.age }}</td>
+                                    <td>{{ rep.ville }}</td>
+                                    <td>{{ rep.program }}</td>
+                                    <td>{{ rep.diplome }}</td>
+                                    <td>{{ rep.center }}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
                     </div>
 
                 </div>
-
             </div>
         </div>
+
+
     </section>
+
+    <!--Modal -->
+    <div class="modal fade" id="modalExportXls" tabindex="-1" role="modal" aria-labelledby="modal-label"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="regForm" [formGroup]="rangeDataForm" (ngSubmit)="submitRange()" method="post"
+                    autocomplete="off">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-label">Exporter les Réponses</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Veuillez choisir la plage que vous voulez exporter.</p>
+                                <div class="row">
+
+                                    <div class="form-group col-6">
+                                        <label for="exampleInputEmail1">Minimum </label>
+                                        <input (ngModelChange)="changeMinData($event,dataSource.filteredData.length)"
+                                            [(ngModel)]="minData" formControlName="min" type="number"
+                                            class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                            placeholder="Entrer Minimum">
+                                        <span class="red-notice" *ngIf="overMin">Nombre Min ne dois pas être négatif ni
+                                            supérieur au max</span>
+
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="exampleInputPassword1">Maximum
+                                            ({{dataSource.filteredData.length}})</label>
+                                        <input (ngModelChange)="changeMaxData($event,dataSource.filteredData.length)"
+                                            [(ngModel)]="maxData" formControlName="max" type="number"
+                                            class="form-control" id="exampleInputPassword1"
+                                            placeholder="Entrer Maximum">
+
+                                        <span class="red-notice" *ngIf="overMax">Nombre Max supérieur à la liste ou
+                                            inférieur au minimum</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-b" data-dismiss="modal">Close</button>
+                        <button class="btn btn-b" data-dismiss="modal" (click)="submitRange()"
+                            [disabled]="rangeDataForm.invalid">Save
+                            Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end: Modal -->
+
     <!-- end: Page Content -->
     <!-- Footer -->
     <app-footer></app-footer>

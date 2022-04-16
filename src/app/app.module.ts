@@ -47,6 +47,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './shared/auth.guard';
 import { SubmissionService } from './services/submission.service';
 import { FourOhFourComponent } from './pages/four-oh-four/four-oh-four.component';
+import { DatePipe } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ExportService } from './services/export.service';
 
 
 @NgModule({
@@ -85,9 +88,10 @@ import { FourOhFourComponent } from './pages/four-oh-four/four-oh-four.component
         deps: [HttpClient]
       }
     }),
+    FontAwesomeModule,
 
   ],
-  providers: [LocaleService, AuthGuard, SubmissionService],
+  providers: [LocaleService, AuthGuard, SubmissionService, DatePipe, ExportService],
   bootstrap: [AppComponent,
   ]
 })
