@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { GlobalConstants } from '../pages/common/global-constants';
 import { Submission } from '../models/submission'
 import { Subject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +22,7 @@ export class SubmissionService {
   }
 
 
-  async getList(dateC: Event) {
+  async getList(dateC: String) {
 
     this.http
       .get<any[]>(`${GlobalConstants.apiURL}/submission/list/${dateC}`)

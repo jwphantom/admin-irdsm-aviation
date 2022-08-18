@@ -29,20 +29,27 @@ export class SubmissionComponent implements OnInit {
 
 
 
-  sub: Submission[] = [];
-  subAll: Submission[] = [];
+  sub: Submission[] = []
+  subAll: Submission[] = []
 
-  submissionSubscription: Subscription | undefined;
+  submissionSubscription: Subscription | undefined
 
-  selectConcours: any = "all";
+  selectConcours: any;
 
-  listConcours: any[] | undefined;
+  listConcours: any[] | undefined
 
   rangeDataForm!: FormGroup
-  @Input() minData: number = 1;
-  @Input() maxData: number = 1;
-  @Input() compteur: number = 1;
+
+  lastMaximum: number = Number(localStorage.getItem('maximum')) | 0
+
+  @Input() minData: number = 1
+
+  @Input() maxData: number = 1
+
+  @Input() compteur: number = 1
+
   public overMax: Boolean = false
+
   public overMin: Boolean = false
 
   /* the table reference */
@@ -67,16 +74,25 @@ export class SubmissionComponent implements OnInit {
 
 
   ngOnInit() {
-    this.title.setTitle("IRDSM AVIATION - Réponses au formulaire");
-    this.storeAdmission()
-    //this.addRangeForm()
 
-    //this.storeAdmission()
-    this.listConcours = this.programs.listConcours;
+    this.title.setTitle("IRDSM AVIATION - Réponses au formulaire");
+
+    this.storeAdmission()
+
+    this.listConcours = this.programs.listConcours
+
+    this.submission.getList(this.listConcours?.[this.listConcours.length - 1].name);
+
+    this.selectConcours = this.listConcours?.[this.listConcours.length - 1].name
+
     this.loadScript('../assets/js/jquery.js');
+
     this.loadScript('../assets/js/plugins.js');
+
     this.loadScript('../assets/js/functions.js');
+
     this.loadScript('../assets/js/form.js');
+
     this.loadScript('https://code.iconify.design/1/1.0.7/iconify.min.js');
 
   }
@@ -103,14 +119,14 @@ export class SubmissionComponent implements OnInit {
     this.submission.emitsubmission();
   }
 
-  changeDateconcours(date: Event) {
+  changeDateconcours(date: String) {
     this.submission.getList(date);
   }
 
   addRangeForm(max: number) {
     this.rangeDataForm = this.formBuilder.group({
-      min: [1, [Validators.required, Validators.max(max)]],
-      max: [, [Validators.required, Validators.max(max), Validators.min(this.minData)]],
+      min: [this.lastMaximum, [Validators.required, Validators.max(max)]],
+      max: [max, [Validators.required, Validators.max(max), Validators.min(this.minData)]],
     });
   }
 
@@ -119,16 +135,20 @@ export class SubmissionComponent implements OnInit {
   }
 
   submitRange() {
-    let min = this.rangeDataForm.get('min')?.value
-    let max = this.rangeDataForm.get('max')?.value
+    let mininum = this.rangeDataForm.get('min')?.value
+    let maximum = this.rangeDataForm.get('max')?.value
+
+    console.log(maximum)
+
+    localStorage.setItem('maximum', JSON.stringify(maximum))
+
     let current_date = this.datePipe.transform(new Date(), 'yyyy-MM-dd')
     let copy_submission = this.cloneSubmission(this.subAll);
 
-    let submission = JSON.parse(JSON.stringify(copy_submission.slice((min - 1), (max))))
+    let submission = JSON.parse(JSON.stringify(copy_submission.slice((mininum - 1), (maximum))))
 
-    console.log(submission)
     this.sub = submission;
-    this.compteur = min;
+    this.compteur = mininum;
     setTimeout(() => {
       this.exportService.exportTableElmToExcel(this.submissionTable, 'Réponses aux formulaire-' + current_date);
     }, 2000)
@@ -137,7 +157,6 @@ export class SubmissionComponent implements OnInit {
 
   exportElmToExcel(): void {
     const c_d = this.datePipe.transform(new Date(), 'yyyy-MM-dd')
-
 
     this.exportService.exportTableElmToExcel(this.submissionTable, 'Réponses aux formulaire-' + c_d);
   }
