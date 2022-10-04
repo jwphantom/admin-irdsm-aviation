@@ -67,6 +67,9 @@ export class ProgramsService {
     }, {
       code: "170922",
       name: "Concours du 17 Septembre 2022",
+    }, {
+      code: "121022",
+      name: "Concours du 12 Novembre 2022",
     }
   ];
 
@@ -81,6 +84,9 @@ export class ProgramsService {
     }, {
       code: "170922",
       name: "Concours du 17 Septembre 2022",
+    }, {
+      code: "121022",
+      name: "Concours du 12 Novembre 2022",
     }
   ];
 
