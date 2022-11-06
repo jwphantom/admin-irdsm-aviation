@@ -32,6 +32,8 @@ import { ScrollTopComponent } from './static/scroll-top/scroll-top.component';
 import { PageTitleComponent } from './static/page-title/page-title.component';
 import { LanguageComponent } from './static/language/language.component';
 import { SubmissionComponent } from './pages/submission/submission.component';
+import { SubmissionComponent as SubmissionPolytechniqueComponent } from './pages/polytechnique/submission/submission.component';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -66,6 +68,7 @@ import { ExportService } from './services/export.service';
     LanguageComponent,
     SubmissionComponent,
     FourOhFourComponent,
+    SubmissionPolytechniqueComponent
   ],
   imports: [
     BrowserModule,
