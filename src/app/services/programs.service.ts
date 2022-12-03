@@ -87,6 +87,10 @@ export class ProgramsService {
     }, {
       code: "121022",
       name: "Concours du 12 Novembre 2022",
+    },
+    {
+      code: "140123",
+      name: "Concours du 14 Janvier 2023",
     }
   ];
 
@@ -115,6 +119,9 @@ export class ProgramsService {
     {
       code: "BEPC",
       name: "BEPC ou Equivalent",
+    }, {
+      code: "140123",
+      name: "Concours du 14 Janvier 2023",
     }
   ];
 
