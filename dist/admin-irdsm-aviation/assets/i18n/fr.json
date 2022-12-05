@@ -1,0 +1,197 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "service": "Service",
+        "about": "A propos",
+        "contact": "Contact",
+        "submission" : "Soumission",
+        "formation": "Formations",
+        "logout" : "Déconnecter",
+        "login": "Connexion"
+
+    },
+
+    "footer": {
+        "title" : "Ecole des Métiers D'Aviation civile",
+        "horaire_travail": "Heure de Travail",
+        "lundi": "Lundi",
+        "vendredi": "Vendredi",
+        "samedi": "Samedi",
+        "location": "Localisation",
+        "adresse" : "Adresse",
+        "contact" : "Contact",
+        "tel" : "Téléphone",
+        "mail" : "Email",
+        "commerce-général-relationnel" : "Commerce Général Relationnel",
+        "copyright" : "Tous droits réservés"
+    },
+    "partner": {
+        "title": "Nos Partenaires",
+        "trust": ""
+    },
+
+    "about": {
+        "title": "A propos",
+        "who_are_you" : "Qui sommes-nous?",
+        "desc_line1": "Situé dans les villes de Yaoundé et Douala, l'Institut Régional DSM Aviation est un centre de formationprivé crée par le groupe DSM dans le but d'offrir des formations dans certains domaines de l'aviation civile. Ces formations ont été accordées par la CCAA qui a jugé l'ecole apte et suffisamment outillé pour encader dans ces domaines (Voir Formations). L'école s'appuie sur trois piliers qui représentent ici sa devise à savoir : Rigueur - Professionnalisme - Excellence.",
+        "power01_title": "Rigueur",
+        "power01_desc": "Grâces à notre équipe d'expert en marketing moderne et au fil du temps, nous avons développé et consolidé notre réseau de client et sommes devenus le réseau de vente relationnel le plus vaste d'afrique.",
+        "power02_title": "Professionnalisme",
+        "power02_desc": "Afrizon se charge du plus gros travail, celui de vendre vos produits grâce à son réseau et donc plus besoin de se soucier de cette tâches, juste assurer la disponibilité du stock.",
+        "power03_title": "Excellence",
+        "power03_desc": "Chez Afrizon, que vous soyez une Multinationale ou juste un simple commercant, vous bénéficiez de notre réseau, ce qui vous donne la chance d'augmenter votre chiffre d'affaire ",
+        "temoignages": "Témoignages",
+        "temoignagnes_intro": "Ils apprécient nos services"
+    },
+
+    "service": {
+        "title": "Nos Services",
+        "what_we_do": "Ce que nous faisons",
+        "service01": "Marketing Relationnel",
+        "service01_desc":"Identification des prospects/clients intéressé par un produit, Mise en oeuvre afin de comprendre ces préferences afin de pouvoir les convertir et les fidéliser.",
+        "service02": "Commerce Général",
+        "service02_desc": "Conglomérat de commerçants, et de prestateurs de services.",
+        "service03": "Suivi Entrepreneurial",
+        "service03_desc": "Gestions des commandes, Suivi des ventes, Communication, Marketing",
+        "promotion": "Profitez de notre vaste réseaux de ventes",
+        "promotion_explain": "Augmentez vos profits en adhérents au réseau AFRIZON.",
+        "contact_us" : "CONTACTEZ_NOUS!"
+    },
+
+    "contact": {
+        "title" : "Contact",
+        "w_to_f_u" : "Où nous trouver?",
+        "contact_us": "Contactez-Nous",
+        "desc" : "Des idées, des recommandations, des observations, des réclamations, etc.? Merci de nous laisser un message avec le plus de détails possible."
+    },
+
+    "home" :{
+        "s01_t":"DEVENIR UN PILOTE DE LIGNE",
+        "s01_d":"Cela est désormais possible grâce à notre partenaire Collège Air Richelieu",
+        "s01_l":"Parcours",
+        "s02_t":"INSTITUT AGRÉE PAR L'AUTORITÉ AÉRONAUTIQUE",
+        "s02_d":"Plus de 10 formations",
+        "s02_l":"Formations",
+        "s03_t":"UNE DOCUMENTATION DE QUALITÉ",
+        "s03_d":"Tous les grands ouvrages du monde de l'aéronautique",
+        "s03_l":"Rendez-vous",
+        "a_t":"A propos de nous",
+        "a_d":"IRDSM AVIATION est un centre de formation privé dans le but d'offrir des formations dans certains metiers de l'aviation civile. Ces formations sont accrodées par la CCAA et aussi par IATA",
+        "start":"Débutez l'aventure avec nous",
+        "date": "Prise de rendez-vous",
+        "skill":"Pourquoi nous choisir?",
+        "skill_d":"Formations de Qualité, Stage et Accompagnement à L'Emploi",
+        "p01_title": "Formations de Qualités",
+        "p01_desc": "Composé ensentiellement d'expert de l'aviation, IRDSM-AVIATION vous garantit une formation de qualité à la hauteur des attentes du secteur de l'emploi.",
+        "p02_title": "Stage de Pratique",
+        "p02_desc": "À travers des différents partenariats IRDSM-AVIATION vous garantit des stages de formations en entreprises afin de mieux appliquer vos connaissances acquises durant la formation.",
+        "p03_title": "Insertion Professionnel",
+        "p03_desc": "Chaque jour, IRDSM-AVIATION se bat d'arrache pieds afin de faciliter à chaque apprenants à la fin de sa formation une insertion professionnelle dans le secteur choisie."
+
+    },
+
+    "formation": {
+        "title": "Formations",
+        "duree": "Durée Formation",
+        "atpl"  : "Licence de pilote de ligne",
+        "atpl_desc" : "La licence de pilote de ligne, abrégée en ATPL, est la licence européenne de pilotage d'avion – ATPL, ou d'hélicoptère – ATPL, de plus haut niveau. Elle est indispensable à l'exercice de Commandant de bord d'un avion certifié CS-25 en transport public.",
+        "ato": "Agent Technique D'exploitation",
+        "ato_desc": "Chargé de la préparation et de la planification des vols, du traitement des passagers et du fret, de l’assistance en escale, du planning des équipages… Le métier de l’Agent Technique d’Exploitation (ATE) est riche d’intérêt et possède de multiples facettes.",
+        "md": "Marchandise Dangereuse",
+        "md_desc": "Conçoit et met en œuvre dans l'entreprise des procédures et des règles de sécurité relatives à la manipulation et au transport de marchandises dangereuses.",
+        "ha" : "Hôtesse de l'air / Steward",
+        "ha_desc": "Hôtesse de l'air ou steward accueillent les passagers à bord de l'avion avant de s'assurer de la sécurité et du bon déroulement du vol. En cabine, ils servent les voyageurs, les informent et veillent à leur confort et à leur sécurité.",
+        "frêt": "Frêt",
+        "frêt_desc": "L'agent de fret aérien traite la marchandise pour le compte de clients ou d'une compagnie aérienne, au sein d'un aéroport. Il conseille le client qui souhaite faire voyager des marchandises, met en place une prestation de transport, s'occupe des formalités douanières et suit l'acheminement.",
+        "aie": "Agent Import / Export",
+        "aie_desc" : "Adminisatrer, et gérer la gestion logistique d'une commande afin de soutenir l'activité de l'entreprise.",
+        "cc": "Contrôle Chargement",
+        "cc_desc" : "Elaboration du plan de chargment, centrage, de l'aeronef et de messages de chargement",
+        "sc" : "Supervision de Chargment",
+        "sc_desc": "Supervision de la realisation du chargement physique, de l'exploitation du plan de chargment d'un aeronef",
+        "ata": "Agent trafic aerien",
+        "ata_desc": "Planifie le chargement et le déchargement en fonction des spécificités masses et centrages du vol. Il établit les documents pour le commandant de bord et le dossier de vol. Il s’occupe également de superviser les différents intervenants de la plateforme, l’embarquement et le débarquement des passagers, l’avitaillement du carburant, le catering, et l’ensemble des services indispensables au départ de l’avion",
+        "pv"  : "Passage vente",
+        "pv_desc" : "",
+        "ae" : "Agent D'escale",
+        "ae_desc": "L'agent d'escale aéroportuaire fait partie des services commerciaux d'une compagnie aérienne. Il travaille aux guichets d'accueil des passagers d'un aéroport, où il prend en charge les clients en partance (embarquement), à leur arrivée (débarquement) ou en correspondance (transit).",
+        "apa": "Agent Piste d'aéroport",
+        "apa_desc":"L'agent / l'agente de piste d'aéroport assure l'ensemble des opérations de pistes. Dès qu'un avion se pose, il /elle passe à l'action et le guide dans ses manœuvres au sol. Il/elle le parque, pose les cales, effectue le chargement et le déchargement des bagages.",
+        "ma": "Magasinier-cariste aeronautique",
+        "ma_desc": "Le magasinier-cariste aéronautique assure un support dans les métiers : réceptionner, distribuer, expédier et faire le lien avec son support logistique.",
+        "mta": "Manutentionnaire Aéronautique",
+        "mta_desc": "Le manutentionnaire d'aéronautique est chargé de l'utilisation du matériel de protection et de fixation des aéronefs, et veille à la sécurité du personnel et du matériel en zone de circulation des aéronefs",
+        "aea" : "Agent D'entretien Avion",
+        "aea_desc": "Entre deux vols, il doit effectuer un nettoyage complet de l'intérieur de l’avion et un nettoyage rapide lors d’une escale. Il vérifie que rien ne manque (produits d’entretien…) et réapprovisionne si nécessaire.",
+        "pd": "Pilotage Drone",
+        "pd_desc": "Dans le civil, les pilotes de drone peuvent exercer dans de nombreux domaines d'activité : BTP, urbanisme, agriculture, environnement, ingénierie, photographie, audiovisuel, la surveillance…"
+    },
+
+    "news" : {
+        "title" : "News"
+    },
+
+    "pilote" : {
+        "programme" : "Programmes",
+        "title": "Licence de pilote de ligne",
+        "condition" : "Condition d’admission",
+        "licence" : "Licences & Qualifications",
+        "rdv" : "Prendre Rendez-vous",
+        "place_formation" : "Ces formations de pilote de ligne se déroulent au sein du Collège AirRichelieu situé au Canada dans la Ville de Longueuil",
+        "programme1" : {
+            "title": "Diplôme d'études collégiales en Techniques de pilotage d’aéronefs ATPL intégré (Collège Air Richelieu)",
+            "condition" : "Avoir réussi les cours de mathématiques (TS ou SN) et de physique du 5ᵉ secondaire ou équivalent",
+            "licence1": "Licence de pilote privé PPL",
+            "licence2": "Licence de pilote professionnel CPL",
+            "licence3": "Qualification vol aux instruments IR / Annotation multi moteurs ME",
+            "licence4": "Formation au travail en équipage MCC (Multi Crew coordination)",
+            "licence5": "Licence de pilote de ligne (SARON et SAMRA) (FROZEN ATPL)",
+            "etape1": "860H de cours techniques",
+            "etape2": "85H de vol",
+            "etape3": "80H de simulateur",
+            "etape4": "660H de cours généraux",
+            "etape5": "24 à 40 mois",
+            "diplome" : "Diplôme et immigration",
+            "diplome_desc" : "Diplôme délivré par le ministère de l’Enseignement supérieur du Québec, et donnant accès à un permis de travail post diplôme d’une durée de vos études ainsi qu’au programme du CSQ (certificat de sélection du Québec) pour l’obtention de la résidence permanente."
+        },
+
+        "programme2" : {
+            "title": "Attestation d'études collégiales de pilote de ligne ATPL intégré (Collège Air Richelieu)",
+            "condition" : "Avoir obtenu un diplôme d’études secondaires Baccalaureat ou équivalent.",
+            "licence1": "Licence de pilote privé PPL",
+            "licence2": "Licence de pilote professionnel CPL",
+            "licence3": "Qualification vol aux instruments IR / Annotation multi moteurs ME",
+            "licence4": "Formation au travail en équipage MCC (Multi Crew coordination)",
+            "licence5": "Licence de pilote de ligne (SARON et SAMRA) (FROZEN ATPL)",
+            "etape1": "1320H de cours techniques",
+            "etape2": "185H de vol",
+            "etape3": "80H de simulateur",
+            "etape4": "Bilingue Anglais & Français",
+            "etape5": "24 à 26 mois",
+            "diplome" : "Diplôme et immigration",
+            "diplome_desc" : "Attestation d’études collégiales délivrée par le Collège Air Richelieu et reconnue par le ministère de l’Enseignement supérieur du Québec, et donnant accès à un permis de travail post diplôme d’une durée de vos études."
+        }
+
+    },
+    "admission": {
+        "title": "Admission",
+        "begin": "Commencons votre procédure",
+        "select_prog" : "Choix de programme",
+        "re-entry": "Date du concours",
+        "personal_info": "Informations personnelles",
+        "fullname": "Nom Complet",
+        "email" : "Email",
+        "phone": "Téléphone",
+        "sexe": "Sexe",
+        "age" : "Age",
+        "etude": "Etudes",
+        "diplome": "Diplômes récents",
+        "choice_center" : "Choix du centre",
+        "center": "Centre",
+        "confirm_admission" : "Je certifie que les informations renseignées sont exactes",
+        "prev": "Précedent",
+        "next": "Suivant",
+        "submit" : "Valider"
+    }
+
+}
