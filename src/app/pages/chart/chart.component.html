@@ -1,0 +1,104 @@
+<div class="body-inner">
+    <!-- Header -->
+    <header id="header" data-fullwidth="true">
+        <div class="header-inner">
+            <div class="container">
+                <!--Logo-->
+                <div id="logo">
+                    <a routerLink="/home">
+                        <img src="assets/images/logo.png" class="logo-default">
+                    </a>
+                </div>
+                <!--End: Logo-->
+                <!--Header Extras-->
+                <app-language></app-language>
+                <!--end: Header Extras-->
+                <!--Navigation Resposnive Trigger-->
+                <div id="mainMenu-trigger"> <a class="lines-button x"><span class="lines"></span></a> </div>
+                <!--end: Navigation Resposnive Trigger-->
+                <!--Navigation-->
+                <app-menu></app-menu>
+                <!--end: Navigation-->
+            </div>
+        </div>
+    </header>
+    <!-- end: Header -->
+    <app-page-title [title]="'Sousmission'" [subtitle]="'Statistics'"></app-page-title>
+
+    <section id="page-content">
+
+        <div class="container">
+            <div style="padding: 20px;">
+                <h4>Réponses aux formulaires ({{subAll.length}}) </h4>
+                <select (ngModelChange)="changeDateconcours($event)" [(ngModel)]="selectConcours">
+                    <option value="all">Tous les concours </option>
+                    <option *ngFor="let l of listConcours" value="{{l.name}}">{{ l.name }}
+                    </option>
+                </select>
+                <br><br>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-deck">
+
+                        <div class="card">
+
+                            <div class="card-body">
+                                <canvas style="margin: 0 auto;" baseChart [type]="'pie'" [datasets]="pieChartDatasets"
+                                    [labels]="pieChartLabels" [options]="pieChartOptions" [plugins]="pieChartPlugins"
+                                    [legend]="pieChartLegend">
+                                </canvas>
+                            </div>
+                            <div class="card-footer" style="text-align: center; font-weight: 700;">
+                                Répartition des sexes
+
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-deck">
+
+                        <div class="card">
+
+                            <div class="card-body">
+                                <canvas style="margin: 0 auto;" width="700" height="500" baseChart
+                                    [data]="lineChartData" [options]="lineChartOptions" [plugins]="lineChartPlugins"
+                                    [legend]="lineChartLegend" [type]="'bar'">>
+                                </canvas>
+                            </div>
+                            <div class="card-footer" style="text-align: center; font-weight: 700;">
+                                7 derniers jours de souscriptions
+
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <!-- end: Page Content -->
+    <!-- Footer -->
+    <app-footer></app-footer>
+
+    <!-- end: Footer -->
+</div>
+<app-scroll-top></app-scroll-top>

@@ -52,6 +52,9 @@ import { FourOhFourComponent } from './pages/four-oh-four/four-oh-four.component
 import { DatePipe } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ExportService } from './services/export.service';
+import { ChartComponent } from './pages/chart/chart.component';
+import { LoadScript } from './services/loadScript.service';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -68,7 +71,8 @@ import { ExportService } from './services/export.service';
     LanguageComponent,
     SubmissionComponent,
     FourOhFourComponent,
-    SubmissionPolytechniqueComponent
+    SubmissionPolytechniqueComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +87,7 @@ import { ExportService } from './services/export.service';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    NgChartsModule,
     AngularFireDatabaseModule,
     TranslateModule.forRoot({
       loader: {
@@ -94,7 +99,13 @@ import { ExportService } from './services/export.service';
     FontAwesomeModule,
 
   ],
-  providers: [LocaleService, AuthGuard, SubmissionService, DatePipe, ExportService],
+  providers: [
+    LocaleService,
+    AuthGuard,
+    SubmissionService,
+    DatePipe,
+    ExportService,
+    LoadScript],
   bootstrap: [AppComponent,
   ]
 })

@@ -7,7 +7,9 @@
         "submission" : "Soumission",
         "formation": "Formations",
         "logout" : "Déconnecter",
-        "login": "Connexion"
+        "login": "Connexion",
+        "statistics" : "Statistiques"
+
 
     },
 

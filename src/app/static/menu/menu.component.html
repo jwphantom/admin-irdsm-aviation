@@ -5,6 +5,8 @@
 
                 <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/">{{ 'nav.submission' |
                         translate }}</a></li>
+                <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/statistics">{{ 'nav.statistics' |
+                        translate }}</a></li>
                 <li style="cursor: pointer;" *ngIf="!isLoggedIn"><a routerLink="/sign-in" title="">{{ 'nav.login' |
                         translate }}</a></li>
                 <li routerLinkActive="active" *ngIf="isLoggedIn"><a (click)="logout()">{{ 'nav.logout' | translate

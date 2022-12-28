@@ -15,6 +15,7 @@ import * as XLSX from 'xlsx';
 import { ExportService } from 'src/app/services/export.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as $ from 'jquery';
+import { LoadScript } from 'src/app/services/loadScript.service';
 
 
 const EXCEL_EXTENSION = '.xlsx';
@@ -55,10 +56,9 @@ export class SubmissionComponent implements OnInit {
   /* the table reference */
   @ViewChild('submissionTable') submissionTable!: ElementRef;
 
-  //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  displayedColumns: string[] = ['no', 'fname', 'phone', 'email', 'sexe', 'age', 'ville', 'programs', 'diplome', 'center'];
+  displayedColumns: string[] = [];
 
-  dataSource = new MatTableDataSource<Submission>([]);
+  dataSource: any
 
 
   constructor(
@@ -68,12 +68,15 @@ export class SubmissionComponent implements OnInit {
     private auth: AuthService,
     private datePipe: DatePipe,
     private exportService: ExportService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public loadScript: LoadScript
 
   ) { }
 
 
   ngOnInit() {
+
+    //console.log("ok")
 
     this.title.setTitle("IRDSM AVIATION - Réponses au formulaire");
 
@@ -85,26 +88,29 @@ export class SubmissionComponent implements OnInit {
 
     this.selectConcours = this.listConcours?.[this.listConcours.length - 1].name
 
-    this.loadScript('../assets/js/jquery.js');
+    this.loadScript.loadScript('../assets/js/jquery.js');
 
-    this.loadScript('../assets/js/plugins.js');
+    this.loadScript.loadScript('../assets/js/plugins.js');
 
-    this.loadScript('../assets/js/functions.js');
+    this.loadScript.loadScript('../assets/js/functions.js');
 
-    this.loadScript('../assets/js/form.js');
+    this.loadScript.loadScript('../assets/js/form.js');
 
-    this.loadScript('https://code.iconify.design/1/1.0.7/iconify.min.js');
+    this.loadScript.loadScript('https://code.iconify.design/1/1.0.7/iconify.min.js');
+
+
+    //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+    this.displayedColumns = ['no', 'fname', 'phone', 'email', 'sexe', 'age', 'ville', 'programs', 'diplome', 'center'];
+
+    this.dataSource = new MatTableDataSource<Submission>([]);
 
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  ngAfterViewInit() {
-  }
-
   storeAdmission() {
 
-    this.submission.getList(this.selectConcours);
+    //this.submission.getList(this.selectConcours);
     this.submissionSubscription = this.submission.submissionSubject.subscribe(
       (submission: Submission[]) => {
         this.sub = submission;
@@ -184,14 +190,5 @@ export class SubmissionComponent implements OnInit {
     }
   }
 
-  public loadScript(url: string) {
-    const body = <HTMLDivElement>document.body;
-    const script = document.createElement('script');
-    script.innerHTML = '';
-    script.src = url;
-    script.async = false;
-    script.defer = true;
-    body.appendChild(script);
-  }
 
 }
