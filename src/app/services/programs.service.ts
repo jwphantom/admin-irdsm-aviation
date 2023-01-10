@@ -70,6 +70,10 @@ export class ProgramsService {
     }, {
       code: "121022",
       name: "Concours du 12 Novembre 2022",
+    },
+    {
+      code: "280123",
+      name: "Concours du 28 Janvier 2023",
     }
   ];
 
@@ -91,7 +95,12 @@ export class ProgramsService {
     {
       code: "140123",
       name: "Concours du 14 Janvier 2023",
+    },
+    {
+      code: "280123",
+      name: "Concours du 28 Janvier 2023",
     }
+
   ];
 
 
