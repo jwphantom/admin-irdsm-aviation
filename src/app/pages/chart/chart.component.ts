@@ -109,13 +109,13 @@ export class ChartComponent implements OnInit {
           datasets: [
             {
               data: [
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[6]), submission),
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[5]), submission),
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[4]), submission),
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[3]), submission),
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[2]), submission),
+                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[0]), submission),
                 this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[1]), submission),
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[0]), submission)], label: 'Souscription'
+                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[2]), submission),
+                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[3]), submission),
+                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[4]), submission),
+                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[5]), submission),
+                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[6]), submission)], label: 'Souscription'
 
             }
           ]
@@ -150,7 +150,7 @@ export class ChartComponent implements OnInit {
 
   setSeventLastDay() {
     const week = [];
-    for (let i = 6; i >= 0; i--) {
+    for (let i = 0; i <= 6; i++) {
       const tomorrow = new Date();
       tomorrow.setDate(this.today.getDate() - i);
       week.push(this.convertDateCreationToDate(tomorrow));
