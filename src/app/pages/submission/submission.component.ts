@@ -116,6 +116,7 @@ export class SubmissionComponent implements OnInit {
     this.submissionSubscription = this.submission.submissionSubject.subscribe(
       (submission: Submission[]) => {
         this.sub = submission;
+        this.subAll = submission
         this.addRangeForm(submission.length)
         this.dataSource = new MatTableDataSource<Submission>(submission);
         this.dataSource.paginator = this.paginator;
@@ -168,12 +169,6 @@ export class SubmissionComponent implements OnInit {
       this.exportService.exportTableElmToExcel(this.submissionTable, 'Réponses aux formulaire-' + current_date);
     }, 2000)
 
-  }
-
-  exportElmToExcel(): void {
-    const c_d = this.datePipe.transform(new Date(), 'yyyy-MM-dd')
-
-    this.exportService.exportTableElmToExcel(this.submissionTable, 'Réponses aux formulaire-' + c_d);
   }
 
   changeMinData(min: Event, ReelMax: Number) {
