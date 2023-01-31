@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { Submission } from 'src/app/models/submission';
@@ -32,6 +32,8 @@ export class SubmissionComponent implements OnInit {
 
   sub: Submission[] = []
   subAll: Submission[] = []
+
+  loader: Boolean = true
 
   submissionSubscription: Subscription | undefined
 
@@ -114,11 +116,18 @@ export class SubmissionComponent implements OnInit {
     this.submissionSubscription = this.submission.submissionSubject.subscribe(
       (submission: Submission[]) => {
         this.sub = submission;
-        this.subAll = submission;
-
         this.addRangeForm(submission.length)
         this.dataSource = new MatTableDataSource<Submission>(submission);
         this.dataSource.paginator = this.paginator;
+
+        if (Object.keys(this.sub).length === 0) {
+          $('#loader').show()
+          $('#submissionTable').hide()
+
+        } else {
+          $('#submissionTable').show()
+          $('#loader').hide()
+        }
 
       }
     );
@@ -188,6 +197,12 @@ export class SubmissionComponent implements OnInit {
     else {
       this.overMax = false
     }
+  }
+
+
+  @HostListener('unloaded')
+  ngOnDestroy() {
+    //this.sub = []
   }
 
 

@@ -9,4 +9,11 @@ export class LoadScript {
         body.appendChild(script);
     }
 
+    public loadJS() {
+        this.loadScript('../assets/js/jquery.js');
+        this.loadScript('../assets/js/plugins.js');
+        this.loadScript('../assets/js/functions.js');
+        this.loadScript('../assets/js/form.js');
+    }
+
 }

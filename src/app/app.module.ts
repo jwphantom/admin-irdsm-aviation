@@ -52,9 +52,18 @@ import { FourOhFourComponent } from './pages/four-oh-four/four-oh-four.component
 import { DatePipe } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ExportService } from './services/export.service';
+
+//chart  component
 import { ChartComponent } from './pages/chart/chart.component';
 import { LoadScript } from './services/loadScript.service';
 import { NgChartsModule } from 'ng2-charts';
+
+//skeleton component
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { ChartService } from './services/chart.service';
+import { LastSubscriptionService } from './services/last-subscription.service';
+
+
 
 
 @NgModule({
@@ -72,7 +81,7 @@ import { NgChartsModule } from 'ng2-charts';
     SubmissionComponent,
     FourOhFourComponent,
     SubmissionPolytechniqueComponent,
-    ChartComponent
+    ChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,12 +106,15 @@ import { NgChartsModule } from 'ng2-charts';
       }
     }),
     FontAwesomeModule,
+    NgxSkeletonLoaderModule
 
   ],
   providers: [
     LocaleService,
     AuthGuard,
     SubmissionService,
+    LastSubscriptionService,
+    ChartService,
     DatePipe,
     ExportService,
     LoadScript],

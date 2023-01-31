@@ -38,18 +38,19 @@
                     </select>
                     <br><br>
 
-                    <div class="table-responsive">
-                        <div class="d-flex flex-row-reverse">
-                            <div class="p-2">
-                                <a class="btn" data-target="#modalExportXls" data-toggle="modal" href="#">Export
-                                    Data
-                                </a>
-                            </div>
-
+                    <div class="d-flex flex-row-reverse">
+                        <div class="p-2">
+                            <a class="btn" data-target="#modalExportXls" data-toggle="modal" href="#">Export
+                                Data
+                            </a>
                         </div>
 
+                    </div>
 
-                        <table>
+
+                    <div class="table-responsive">
+
+                        <table style="display: none;" id="submissionTable">
                             <div class="mat-elevation-z8" #userTable>
                                 <table mat-table [dataSource]="dataSource">
 
@@ -153,6 +154,10 @@
                         </table>
 
                     </div>
+
+                    <ngx-skeleton-loader id="loader" count="6" appearance="line"
+                        animation="pulse"></ngx-skeleton-loader>
+
 
                 </div>
             </div>

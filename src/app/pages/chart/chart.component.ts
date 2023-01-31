@@ -3,16 +3,14 @@ import { LoadScript } from 'src/app/services/loadScript.service';
 import { Title } from '@angular/platform-browser';
 import { SubmissionService } from 'src/app/services/submission.service';
 import { ProgramsService } from 'src/app/services/programs.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { DatePipe } from '@angular/common';
-import { ExportService } from 'src/app/services/export.service';
-import { FormBuilder } from '@angular/forms';
 import { Observable, Subscription, take } from 'rxjs';
 import { Submission } from 'src/app/models/submission';
 
 
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { ChartService } from 'src/app/services/chart.service';
+import { DayService } from 'src/app/services/day.service';
+import { LastSubscriptionService } from 'src/app/services/last-subscription.service';
 
 
 @Component({
@@ -26,11 +24,10 @@ export class ChartComponent implements OnInit {
   constructor(public loadScript: LoadScript,
     private title: Title,
     private submission: SubmissionService,
-    private programs: ProgramsService,
-    private auth: AuthService,
-    private datePipe: DatePipe,
-    private formBuilder: FormBuilder,
-    private chartService: ChartService) { }
+    private chart: ChartService,
+    private day: DayService,
+    private lastSubscription: LastSubscriptionService,
+    private programs: ProgramsService) { }
 
   selectConcours: any;
 
@@ -46,14 +43,25 @@ export class ChartComponent implements OnInit {
   listConcours: any[] | undefined
 
   // sexe chart
-  public pieChartOptions: ChartOptions<'pie'> = {
-    responsive: false,
+  public sexPieChartOptions: ChartOptions<'pie'> = {
+    responsive: true,
   };
 
-  public pieChartLabels = ['Homme', 'Femme'];
-  public pieChartDatasets: any[] = [];
-  public pieChartLegend = true;
-  public pieChartPlugins = [];
+  public sexPieChartLabels = ['Homme', 'Femme'];
+  public sexPieChartDatasets: any[] = [];
+  public sexPieChartLegend = true;
+  public sexPieChartPlugins = [];
+
+
+  // city chart
+  public centerPieChartOptions: ChartOptions<'pie'> = {
+    responsive: true,
+  };
+
+  public centerPieChartLabels = ['Yaoundé', 'Douala'];
+  public centerPieChartDatasets: any[] = [];
+  public centerPieChartLegend = true;
+  public centerPieChartPlugins = [];
 
 
 
@@ -62,15 +70,24 @@ export class ChartComponent implements OnInit {
   public today = new Date();
 
   public sevenLastDay: any[] = []
+  public sevenLastDaySubscription: Subscription | undefined
 
 
-  public lineChartData: ChartConfiguration<'bar'>['data'] | undefined
-  public lineChartOptions: ChartOptions<'bar'> = {
+  //seven last subscroiption
+  public SubscriptionByDay: any[] = []
+  public SubscriptionByDaySubscription: Subscription | undefined
+
+
+  public lineChartData: ChartConfiguration<'line'>['data'] | undefined
+  public lineChartOptions: ChartOptions<'line'> = {
     responsive: true
   };
   public lineChartPlugins = [];
 
   public lineChartLegend = true;
+
+
+
 
   async ngOnInit(): Promise<any> {
     this.title.setTitle("IRDSM AVIATION - Statistics");
@@ -81,41 +98,82 @@ export class ChartComponent implements OnInit {
 
     this.storeAdmission()
 
-    this.setSeventLastDay()
+    this.storeSevenLastDay()
 
-    this.submission.getList(this.listConcours?.[this.listConcours.length - 1].name);
+    this.submission.getList(this.selectConcours);
 
-    this.loadScript.loadScript('../assets/js/jquery.js');
+    this.loadScript.loadJS();
+  }
 
-    this.loadScript.loadScript('../assets/js/plugins.js');
+  storeSevenLastDay() {
+    this.day.setSeventLastDay()
+    this.sevenLastDaySubscription = this.day.sevenLastDaySubject.subscribe(
+      (sevenLastDay: Submission[]) => {
+        this.sevenLastDay = sevenLastDay;
+      }
+    );
+    this.day.emitSevenLastDay();
+  }
 
-    this.loadScript.loadScript('../assets/js/functions.js');
-
-    this.loadScript.loadScript('../assets/js/form.js');
+  async storeLastSubscription(subs: any) {
+    this.lastSubscription.setCountSubscriptionByDay(subs)
+    this.SubscriptionByDaySubscription = this.lastSubscription.countSubscriptionByDaysubject.subscribe(
+      (countSubscriptionByDay: Submission[]) => {
+        this.SubscriptionByDay = countSubscriptionByDay;
+      }
+    );
+    this.lastSubscription.emitcountSubscriptionByDay();
   }
 
   storeAdmission() {
 
-    //this.submission.getList(this.selectConcours);
     this.submissionSubscription = this.submission.submissionSubject.subscribe(
       (submission: Submission[]) => {
+
         this.subAll = submission;
-        this.pieChartDatasets = [{
-          data: [this.sexeLengthFilter("M", submission).length, this.sexeLengthFilter("F", submission).length]
+
+        this.storeLastSubscription(submission)
+
+        this.sexPieChartDatasets = [{
+          data: [this.sexeLengthFilter("M", submission).length, this.sexeLengthFilter("F", submission).length],
+          backgroundColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)'
+          ],
+          hoverBackgroundColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)'
+          ], hoverBorderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)'
+          ],
+        }]
+
+        this.centerPieChartDatasets = [{
+          data: [this.centerLengthFilter("Yaoundé - Mballa 2", submission).length, this.centerLengthFilter("Douala - Immeuble Dekage", submission).length],
+          backgroundColor: [
+            '#00763B',
+            '#F6A003'
+          ],
+          hoverBackgroundColor: [
+            '#00763B',
+            '#F6A003'
+          ],
+          hoverBorderColor: [
+            '#00763B',
+            '#F6A003'
+          ],
+
         }]
 
         this.lineChartData = {
           labels: this.sevenLastDay,
           datasets: [
             {
-              data: [
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[0]), submission),
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[1]), submission),
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[2]), submission),
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[3]), submission),
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[4]), submission),
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[5]), submission),
-                this.countSubscriptionByDay(this.convertDateCreationToDate(this.sevenLastDay[6]), submission)], label: 'Souscription'
+              data: this.SubscriptionByDay,
+              pointBackgroundColor: 'red',
+              borderColor: 'blue',
+              label: 'Souscriptions'
 
             }
           ]
@@ -123,7 +181,7 @@ export class ChartComponent implements OnInit {
 
       }
     );
-    this.submission.emitsubmission();
+    //this.submission.emitsubmission();
   }
 
   changeDateconcours(date: String) {
@@ -138,32 +196,8 @@ export class ChartComponent implements OnInit {
     return this.clone(data).filter((d: { sexe: string }) => d.sexe === sexe);
   };
 
-  convertDay(n: number) {
-    return n > 9 ? "" + n : "0" + n;
-  };
-
-  convertDateCreationToDate(date: any) {
-    //const tempDate = new Date(date).toDateString();
-    return `${new Date(date).getFullYear()}/${Number(this.convertDay(new Date(date).getMonth())) + 1
-      }/${this.convertDay(new Date(date).getDate())}`;
-  };
-
-  setSeventLastDay() {
-    const week = [];
-    for (let i = 0; i <= 6; i++) {
-      const tomorrow = new Date();
-      tomorrow.setDate(this.today.getDate() - i);
-      week.push(this.convertDateCreationToDate(tomorrow));
-    }
-
-    this.sevenLastDay = week;
-  }
-
-  countSubscriptionByDay(date: string, data: any[]) {
-    return this.clone(data).filter(
-      (d: { dateCreation: Date }) =>
-        this.convertDateCreationToDate(d.dateCreation) === date
-    ).length;
+  centerLengthFilter(center: string, data: any[]) {
+    return this.clone(data).filter((d: { center: string }) => d.center === center);
   };
 
 }

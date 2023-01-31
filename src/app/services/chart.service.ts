@@ -10,10 +10,11 @@ export class ChartService {
   sexeChart: Submission[] = [];
   sexeChartSubject = new Subject<Submission[]>();
 
+  public today = new Date();
+
+
 
   constructor() { }
 
-  emitSexeChart() {
-    this.sexeChartSubject.next(this.sexeChart);
-  }
+
 }
