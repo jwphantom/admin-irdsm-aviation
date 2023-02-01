@@ -12,12 +12,11 @@ import { ChartComponent } from './pages/chart/chart.component';
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'statistics', component: ChartComponent, canActivate: [AuthGuard] },
-  { path: '', component: SubmissionComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'submission', pathMatch: 'full' },
+  { path: 'submission', component: SubmissionComponent, canActivate: [AuthGuard] },
   { path: 'polytechnique/admission', component: SubmissionPolytechniqueComponent, canActivate: [AuthGuard] },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' },
-
-
 
 ];
 

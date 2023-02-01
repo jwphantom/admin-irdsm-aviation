@@ -43,13 +43,10 @@
 
                         <div class="card">
 
-                            <div class="card-body">
-                                <canvas style="margin: 0 auto;" baseChart [type]="'pie'"
-                                    [datasets]="sexPieChartDatasets" [labels]="sexPieChartLabels"
-                                    [options]="sexPieChartOptions" [plugins]="sexPieChartPlugins"
-                                    [legend]="sexPieChartLegend">
-                                </canvas>
+                            <div class="card-body" style="text-align: center;">
+                                <app-sex-chart *ngIf="subAll.length > 0" [sub]="subAll"></app-sex-chart>
                             </div>
+
                             <div class="card-footer" style="text-align: center; font-weight: 700;">
                                 Répartition des sexes
 
@@ -64,11 +61,7 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <canvas style="margin: 0 auto;" baseChart [type]="'pie'"
-                                    [datasets]="centerPieChartDatasets" [labels]="centerPieChartLabels"
-                                    [options]="centerPieChartOptions" [plugins]="centerPieChartPlugins"
-                                    [legend]="centerPieChartLegend">
-                                </canvas>
+                                <app-center-chart *ngIf="subAll.length > 0" [sub]="subAll"></app-center-chart>
                             </div>
                             <div class="card-footer" style="text-align: center; font-weight: 700;">
                                 Répartition des souscriptions par ville
@@ -89,10 +82,9 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <canvas style="margin: 0 auto;" width="700" height="500" baseChart
-                                    [data]="lineChartData" [options]="lineChartOptions" [plugins]="lineChartPlugins"
-                                    [legend]="lineChartLegend" [type]="'line'">>
-                                </canvas>
+                                <app-last-submission-chart *ngIf="subAll.length > 0"
+                                    [sub]="subAll"></app-last-submission-chart>
+
                             </div>
                             <div class="card-footer" style="text-align: center; font-weight: 700;">
                                 7 derniers jours de souscriptions

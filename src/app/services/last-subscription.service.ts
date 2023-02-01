@@ -33,6 +33,7 @@ export class LastSubscriptionService {
   };
 
   async setCountSubscriptionByDay(submission: any) {
+    this.countSubscriptionByDay = []
     for (let i = 0; i < this.day.sevenLastDay.length; i++) {
       this.countSubscriptionByDay.push(this.findCountSubscriptionByDay(this.day.convertDateCreationToDate(this.day.sevenLastDay[i]), submission))
     }

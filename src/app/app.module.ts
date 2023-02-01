@@ -62,6 +62,11 @@ import { NgChartsModule } from 'ng2-charts';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ChartService } from './services/chart.service';
 import { LastSubscriptionService } from './services/last-subscription.service';
+import { CenterChartService } from './services/center-chart.service';
+import { SexChartService } from './services/sex-chart.service';
+import { SexChartComponent } from './components/chart/sex-chart/sex-chart.component';
+import { CenterChartComponent } from './components/chart/center-chart/center-chart.component';
+import { LastSubmissionChartComponent } from './components/chart/last-submission-chart/last-submission-chart.component';
 
 
 
@@ -82,6 +87,9 @@ import { LastSubscriptionService } from './services/last-subscription.service';
     FourOhFourComponent,
     SubmissionPolytechniqueComponent,
     ChartComponent,
+    SexChartComponent,
+    CenterChartComponent,
+    LastSubmissionChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,6 +123,8 @@ import { LastSubscriptionService } from './services/last-subscription.service';
     SubmissionService,
     LastSubscriptionService,
     ChartService,
+    CenterChartService,
+    SexChartService,
     DatePipe,
     ExportService,
     LoadScript],

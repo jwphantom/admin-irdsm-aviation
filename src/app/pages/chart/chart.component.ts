@@ -11,6 +11,8 @@ import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { ChartService } from 'src/app/services/chart.service';
 import { DayService } from 'src/app/services/day.service';
 import { LastSubscriptionService } from 'src/app/services/last-subscription.service';
+import { CenterChartService } from 'src/app/services/center-chart.service';
+import { SexChartService } from 'src/app/services/sex-chart.service';
 
 
 @Component({
@@ -27,6 +29,8 @@ export class ChartComponent implements OnInit {
     private chart: ChartService,
     private day: DayService,
     private lastSubscription: LastSubscriptionService,
+    private centerChartService: CenterChartService,
+    private sexChartService: SexChartService,
     private programs: ProgramsService) { }
 
   selectConcours: any;
@@ -42,54 +46,11 @@ export class ChartComponent implements OnInit {
 
   listConcours: any[] | undefined
 
-  // sexe chart
-  public sexPieChartOptions: ChartOptions<'pie'> = {
-    responsive: true,
-  };
-
-  public sexPieChartLabels = ['Homme', 'Femme'];
-  public sexPieChartDatasets: any[] = [];
-  public sexPieChartLegend = true;
-  public sexPieChartPlugins = [];
-
-
-  // city chart
-  public centerPieChartOptions: ChartOptions<'pie'> = {
-    responsive: true,
-  };
-
-  public centerPieChartLabels = ['Yaoundé', 'Douala'];
-  public centerPieChartDatasets: any[] = [];
-  public centerPieChartLegend = true;
-  public centerPieChartPlugins = [];
+  loader: Boolean = true
 
 
 
-  //Days subscription
-
-  public today = new Date();
-
-  public sevenLastDay: any[] = []
-  public sevenLastDaySubscription: Subscription | undefined
-
-
-  //seven last subscroiption
-  public SubscriptionByDay: any[] = []
-  public SubscriptionByDaySubscription: Subscription | undefined
-
-
-  public lineChartData: ChartConfiguration<'line'>['data'] | undefined
-  public lineChartOptions: ChartOptions<'line'> = {
-    responsive: true
-  };
-  public lineChartPlugins = [];
-
-  public lineChartLegend = true;
-
-
-
-
-  async ngOnInit(): Promise<any> {
+  ngOnInit() {
     this.title.setTitle("IRDSM AVIATION - Statistics");
 
     this.listConcours = this.programs.listConcours
@@ -98,106 +59,25 @@ export class ChartComponent implements OnInit {
 
     this.storeAdmission()
 
-    this.storeSevenLastDay()
-
     this.submission.getList(this.selectConcours);
 
     this.loadScript.loadJS();
   }
 
-  storeSevenLastDay() {
-    this.day.setSeventLastDay()
-    this.sevenLastDaySubscription = this.day.sevenLastDaySubject.subscribe(
-      (sevenLastDay: Submission[]) => {
-        this.sevenLastDay = sevenLastDay;
-      }
-    );
-    this.day.emitSevenLastDay();
-  }
-
-  async storeLastSubscription(subs: any) {
-    this.lastSubscription.setCountSubscriptionByDay(subs)
-    this.SubscriptionByDaySubscription = this.lastSubscription.countSubscriptionByDaysubject.subscribe(
-      (countSubscriptionByDay: Submission[]) => {
-        this.SubscriptionByDay = countSubscriptionByDay;
-      }
-    );
-    this.lastSubscription.emitcountSubscriptionByDay();
-  }
 
   storeAdmission() {
 
     this.submissionSubscription = this.submission.submissionSubject.subscribe(
       (submission: Submission[]) => {
-
         this.subAll = submission;
-
-        this.storeLastSubscription(submission)
-
-        this.sexPieChartDatasets = [{
-          data: [this.sexeLengthFilter("M", submission).length, this.sexeLengthFilter("F", submission).length],
-          backgroundColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)'
-          ],
-          hoverBackgroundColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)'
-          ], hoverBorderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)'
-          ],
-        }]
-
-        this.centerPieChartDatasets = [{
-          data: [this.centerLengthFilter("Yaoundé - Mballa 2", submission).length, this.centerLengthFilter("Douala - Immeuble Dekage", submission).length],
-          backgroundColor: [
-            '#00763B',
-            '#F6A003'
-          ],
-          hoverBackgroundColor: [
-            '#00763B',
-            '#F6A003'
-          ],
-          hoverBorderColor: [
-            '#00763B',
-            '#F6A003'
-          ],
-
-        }]
-
-        this.lineChartData = {
-          labels: this.sevenLastDay,
-          datasets: [
-            {
-              data: this.SubscriptionByDay,
-              pointBackgroundColor: 'red',
-              borderColor: 'blue',
-              label: 'Souscriptions'
-
-            }
-          ]
-        };
+        // console.log(this.subAll)
 
       }
     );
-    //this.submission.emitsubmission();
   }
 
   changeDateconcours(date: String) {
     this.submission.getList(date);
   }
-
-  clone(data: any) {
-    return JSON.parse(JSON.stringify(data));
-  };
-
-  sexeLengthFilter(sexe: string, data: any[]) {
-    return this.clone(data).filter((d: { sexe: string }) => d.sexe === sexe);
-  };
-
-  centerLengthFilter(center: string, data: any[]) {
-    return this.clone(data).filter((d: { center: string }) => d.center === center);
-  };
 
 }

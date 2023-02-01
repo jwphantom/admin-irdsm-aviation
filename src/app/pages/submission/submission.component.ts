@@ -195,10 +195,5 @@ export class SubmissionComponent implements OnInit {
   }
 
 
-  @HostListener('unloaded')
-  ngOnDestroy() {
-    //this.sub = []
-  }
-
 
 }
