@@ -23,7 +23,7 @@ import { SignInComponent } from './pages/auth/sign-in/sign-in.component';
 
 //component
 import { HomeComponent } from './pages/home/home.component';
-import { LocaleService } from './services/locale.service';
+import { LocaleService } from './services/locale/locale.service';
 import { HeaderComponent } from './static/header/header.component';
 import { PartnerComponent } from './static/partner/partner.component';
 import { FooterComponent } from './static/footer/footer.component';
@@ -47,26 +47,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //authguard
 import { AuthGuard } from './shared/auth.guard';
-import { SubmissionService } from './services/submission.service';
+import { SubmissionService } from './services/submission/submission.service';
 import { FourOhFourComponent } from './pages/four-oh-four/four-oh-four.component';
 import { DatePipe } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ExportService } from './services/export.service';
+import { ExportService } from './services/submission/export.service';
 
 //chart  component
 import { ChartComponent } from './pages/chart/chart.component';
-import { LoadScript } from './services/loadScript.service';
+import { LoadScript } from './services/script/loadScript.service';
 import { NgChartsModule } from 'ng2-charts';
 
 //skeleton component
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { ChartService } from './services/chart.service';
-import { LastSubscriptionService } from './services/last-subscription.service';
-import { CenterChartService } from './services/center-chart.service';
-import { SexChartService } from './services/sex-chart.service';
+import { ChartService } from './services/chart/chart.service';
+import { LastSubscriptionService } from './services/chart/last-subscription.service';
+import { CenterChartService } from './services/chart/center-chart.service';
+import { SexChartService } from './services/chart/sex-chart.service';
 import { SexChartComponent } from './components/chart/sex-chart/sex-chart.component';
 import { CenterChartComponent } from './components/chart/center-chart/center-chart.component';
 import { LastSubmissionChartComponent } from './components/chart/last-submission-chart/last-submission-chart.component';
+import { TokenService } from './services/token/token.service';
+import { AuthService } from './services/auth/auth.service';
 
 
 
@@ -120,13 +122,15 @@ import { LastSubmissionChartComponent } from './components/chart/last-submission
   providers: [
     LocaleService,
     AuthGuard,
-    SubmissionService,
+    AuthService,
     LastSubscriptionService,
     ChartService,
     CenterChartService,
     SexChartService,
     DatePipe,
     ExportService,
+    LoadScript,
+    TokenService,
     LoadScript],
   bootstrap: [AppComponent,
   ]

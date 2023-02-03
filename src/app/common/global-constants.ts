@@ -9,10 +9,10 @@ export class GlobalConstants {
     //public static apiURL: string = "http://localhost:3001/api";
 
     //app version
-    public static version: string = "1.4.0";
+    public static version: string = "2.1.0";
 
     //year of current year
-    public static year: string = "2022";
+    public static year: string = "2023";
 
     //email website
     public static email: string = "campus@irdsm-aviation";

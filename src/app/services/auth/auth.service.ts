@@ -1,11 +1,9 @@
-import { Injectable, NgZone } from '@angular/core';
-import * as firebase from 'firebase/app';
-import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
-import { GlobalConstants } from '../pages/common/global-constants';
-import { User } from '../models/user';
+import { Injectable, NgZone } from '@angular/core';
+import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from "@angular/router";
+import { GlobalConstants } from '../../common/global-constants';
 
 
 
@@ -45,6 +43,10 @@ export class AuthService {
     })
   }
 
+  ngOnInit() {
+    console.log(this.getUser())
+  }
+
   SignIn(email: string, password: string) {
 
 
@@ -52,10 +54,11 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
 
+        // localStorage.setItem('user', JSON.stringify(result.user));
 
-        localStorage.setItem('user', JSON.stringify(result.user));
+        this.StoreToken(result);
 
-        this.router.navigate(['']);
+        //this.router.navigate(['']);
 
       })
       .catch((error) => {
@@ -64,22 +67,8 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-    let r: boolean;
-
     const user = JSON.parse(localStorage.getItem('user')!);
     return user && !!Object.keys(user).length ? true : false
-
-    // if (!user) {
-    //   r = false; 
-
-    //   console.log('test1')
-
-    //   localStorage.setItem('user', '{}');
-    //   console.log(Object.keys(user).length);
-    // }
-    // return r;
-
-    //return !!Object.keys(user).length ? true : false;
   }
 
   // Sign out 
@@ -90,4 +79,29 @@ export class AuthService {
       this.router.navigate(['sign-in']);
     })
   }
+
+  getUser() {
+    let user = JSON.parse(localStorage.getItem('user')!)
+
+    return user
+  }
+
+  async StoreToken(result: any) {
+    this.http
+      .post<any[]>(`${GlobalConstants.apiURL}/user/sign-in`, { email: this.getUser().email })
+      .subscribe(
+        async (res: any) => {
+          console.log("ok")
+          await localStorage.setItem("ACCESS_TOKEN", res['token']);
+          await localStorage.setItem("userId", res['userId']);
+          await localStorage.setItem('user', JSON.stringify(result.user));
+
+          this.router.navigate(['']);
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
+  }
+
 }

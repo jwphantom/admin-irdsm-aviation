@@ -6,13 +6,13 @@ import { SubmissionService } from 'src/app/pages/polytechnique/services/submissi
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProgramsService } from 'src/app/pages/polytechnique/services/programs.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { DatePipe } from '@angular/common';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
-import { ExportService } from 'src/app/services/export.service';
+import { ExportService } from 'src/app/services/submission/export.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as $ from 'jquery';
 

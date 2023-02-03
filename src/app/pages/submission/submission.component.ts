@@ -2,20 +2,17 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input, HostLis
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { Submission } from 'src/app/models/submission';
-import { SubmissionService } from 'src/app/services/submission.service';
+import { SubmissionService } from 'src/app/services/submission/submission.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProgramsService } from 'src/app/services/programs.service';
-import { AuthService } from 'src/app/services/auth.service';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+import { ProgramsService } from 'src/app/services/submission/programs.service';
+
 import { DatePipe } from '@angular/common';
-import * as FileSaver from 'file-saver';
-import * as XLSX from 'xlsx';
-import { ExportService } from 'src/app/services/export.service';
+
+import { ExportService } from 'src/app/services/submission/export.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as $ from 'jquery';
-import { LoadScript } from 'src/app/services/loadScript.service';
+import { LoadScript } from 'src/app/services/script/loadScript.service';
 
 
 const EXCEL_EXTENSION = '.xlsx';
@@ -67,18 +64,15 @@ export class SubmissionComponent implements OnInit {
     private title: Title,
     private submission: SubmissionService,
     private programs: ProgramsService,
-    private auth: AuthService,
     private datePipe: DatePipe,
     private exportService: ExportService,
     private formBuilder: FormBuilder,
-    public loadScript: LoadScript
+    public loadScript: LoadScript,
 
   ) { }
 
 
   ngOnInit() {
-
-    //console.log("ok")
 
     this.title.setTitle("IRDSM AVIATION - Réponses au formulaire");
 
@@ -90,29 +84,18 @@ export class SubmissionComponent implements OnInit {
 
     this.selectConcours = this.listConcours?.[this.listConcours.length - 1].name
 
-    this.loadScript.loadScript('../assets/js/jquery.js');
+    this.loadScript.loadJS();
 
-    this.loadScript.loadScript('../assets/js/plugins.js');
-
-    this.loadScript.loadScript('../assets/js/functions.js');
-
-    this.loadScript.loadScript('../assets/js/form.js');
-
-    this.loadScript.loadScript('https://code.iconify.design/1/1.0.7/iconify.min.js');
-
-
-    //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     this.displayedColumns = ['no', 'fname', 'phone', 'email', 'sexe', 'age', 'ville', 'programs', 'diplome', 'center'];
 
     this.dataSource = new MatTableDataSource<Submission>([]);
 
   }
 
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   storeAdmission() {
-
-    //this.submission.getList(this.selectConcours);
     this.submissionSubscription = this.submission.submissionSubject.subscribe(
       (submission: Submission[]) => {
         this.sub = submission;
@@ -172,26 +155,11 @@ export class SubmissionComponent implements OnInit {
   }
 
   changeMinData(min: Event, ReelMax: Number) {
-    if (ReelMax == 0) ReelMax = 1
-    if (Number(min) > Number(ReelMax) || Number(min) < 0) {
-      this.overMin = true
-    }
-    else {
-      this.overMin = false
-    }
-
-
+    this.overMin = this.submission.changeMinData(min, ReelMax)
   }
 
   changeMaxData(max: Event, ReelMax: Number) {
-    if (ReelMax == 0) { ReelMax = 1 }
-
-    if (Number(max) > Number(ReelMax) || Number(max) < this.minData) {
-      this.overMax = true
-    }
-    else {
-      this.overMax = false
-    }
+    this.overMax = this.submission.changeMinData(max, ReelMax)
   }
 
 

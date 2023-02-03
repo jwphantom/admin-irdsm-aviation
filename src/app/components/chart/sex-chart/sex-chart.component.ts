@@ -2,8 +2,8 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 import { ChartOptions } from 'chart.js';
 import { Subscription } from 'rxjs';
 import { Submission } from 'src/app/models/submission';
-import { SexChartService } from 'src/app/services/sex-chart.service';
-import { SubmissionService } from 'src/app/services/submission.service';
+import { SexChartService } from 'src/app/services/chart/sex-chart.service';
+import { SubmissionService } from 'src/app/services/submission/submission.service';
 
 @Component({
   selector: 'app-sex-chart',

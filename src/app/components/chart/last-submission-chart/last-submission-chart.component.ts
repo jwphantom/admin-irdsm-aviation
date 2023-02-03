@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { Subscription } from 'rxjs';
 import { Submission } from 'src/app/models/submission';
-import { DayService } from 'src/app/services/day.service';
-import { LastSubscriptionService } from 'src/app/services/last-subscription.service';
+import { DayService } from 'src/app/services/chart/day.service';
+import { LastSubscriptionService } from 'src/app/services/chart/last-subscription.service';
 
 @Component({
   selector: 'app-last-submission-chart',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -17,6 +17,9 @@ export class SignInComponent implements OnInit {
     this.title.setTitle("IRDSM AVIATION - sign In");
 
     //this.storeAdmission()
+
+    console.log(this.auth.getUser())
+
     this.loadScript('../assets/js/jquery.js');
     this.loadScript('../assets/js/plugins.js');
     this.loadScript('../assets/js/functions.js');

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { GlobalConstants } from 'src/app/pages/common/global-constants';
+import { GlobalConstants } from 'src/app/common/global-constants';
 import { Submission } from 'src/app/models/submission'
 import { Subject } from 'rxjs';
 

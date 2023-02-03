@@ -1,19 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadScript } from 'src/app/services/loadScript.service';
+import { LoadScript } from 'src/app/services/script/loadScript.service';
 import { Title } from '@angular/platform-browser';
-import { SubmissionService } from 'src/app/services/submission.service';
-import { ProgramsService } from 'src/app/services/programs.service';
+import { SubmissionService } from 'src/app/services/submission/submission.service';
+import { ProgramsService } from 'src/app/services/submission/programs.service';
 import { Observable, Subscription, take } from 'rxjs';
 import { Submission } from 'src/app/models/submission';
-
-
-import { ChartConfiguration, ChartOptions } from 'chart.js';
-import { ChartService } from 'src/app/services/chart.service';
-import { DayService } from 'src/app/services/day.service';
-import { LastSubscriptionService } from 'src/app/services/last-subscription.service';
-import { CenterChartService } from 'src/app/services/center-chart.service';
-import { SexChartService } from 'src/app/services/sex-chart.service';
-
 
 @Component({
   selector: 'app-chart',
@@ -26,11 +17,6 @@ export class ChartComponent implements OnInit {
   constructor(public loadScript: LoadScript,
     private title: Title,
     private submission: SubmissionService,
-    private chart: ChartService,
-    private day: DayService,
-    private lastSubscription: LastSubscriptionService,
-    private centerChartService: CenterChartService,
-    private sexChartService: SexChartService,
     private programs: ProgramsService) { }
 
   selectConcours: any;

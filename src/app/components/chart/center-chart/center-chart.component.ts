@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ChartOptions } from 'chart.js';
-import { CenterChartService } from 'src/app/services/center-chart.service';
-import { SubmissionService } from 'src/app/services/submission.service';
+import { CenterChartService } from 'src/app/services/chart/center-chart.service';
+import { SubmissionService } from 'src/app/services/submission/submission.service';
 
 @Component({
   selector: 'app-center-chart',
