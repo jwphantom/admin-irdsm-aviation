@@ -7,11 +7,13 @@ import { SubmissionComponent } from './pages/submission/submission.component';
 import { SubmissionComponent as SubmissionPolytechniqueComponent } from './pages/polytechnique/submission/submission.component';
 import { AuthGuard } from "./shared/auth.guard";
 import { ChartComponent } from './pages/chart/chart.component';
+import { CompetitionsComponent } from './pages/competitions/competitions.component';
 
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'statistics', component: ChartComponent, canActivate: [AuthGuard] },
+  { path: 'competition', component: CompetitionsComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'submission', pathMatch: 'full' },
   { path: 'submission', component: SubmissionComponent, canActivate: [AuthGuard] },
   { path: 'polytechnique/admission', component: SubmissionPolytechniqueComponent, canActivate: [AuthGuard] },

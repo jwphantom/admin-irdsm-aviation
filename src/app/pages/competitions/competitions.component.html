@@ -1,0 +1,85 @@
+<div class="body-inner">
+    <!-- Header -->
+    <header id="header" data-fullwidth="true">
+        <div class="header-inner">
+            <div class="container">
+                <!--Logo-->
+                <div id="logo">
+                    <a routerLink="/home">
+                        <img src="assets/images/logo.png" class="logo-default">
+                    </a>
+                </div>
+                <!--End: Logo-->
+                <!--Header Extras-->
+                <app-language></app-language>
+                <!--end: Header Extras-->
+                <!--Navigation Resposnive Trigger-->
+                <div id="mainMenu-trigger"> <a class="lines-button x"><span class="lines"></span></a> </div>
+                <!--end: Navigation Resposnive Trigger-->
+                <!--Navigation-->
+                <app-menu></app-menu>
+                <!--end: Navigation-->
+            </div>
+        </div>
+    </header>
+    <!-- end: Header -->
+    <app-page-title [title]="'Sousmission'" [subtitle]="'Competition'"></app-page-title>
+
+    <section id="page-content">
+
+        <div class="container">
+            <div class="windowsCustom">
+                <div class="flex-container">
+                    <div class="title">
+                        <h4>Listes des compétitions</h4>
+                    </div>
+                    <div class="action">
+                        <button class="btn btn-b" data-dismiss="modal">Ajouter</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <br>
+        <div class="container">
+            <div class="card-deck">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Selectionner une date de concours</h5>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="far fa-calendar"></i></span>
+                            </div>
+                            <input type="date" class="form-control" min="{{today | date:'yyyy-MM-dd'}}"
+                                [(ngModel)]="dateSelect" (change)="selectDateCompetition()" placeholder="Username"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div style="text-align: right;">
+                            <button (click)="saveDateCompetition()" [disabled]="!dateSelect"
+                                class="btn btn-success">Enregistrer</button>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Nombre de jours : {{differenceEnJours}} jours</small>&nbsp;
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <!-- end: Page Content -->
+    <!-- Footer -->
+    <app-footer></app-footer>
+
+    <!-- end: Footer -->
+</div>
+<app-scroll-top></app-scroll-top>

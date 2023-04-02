@@ -75,7 +75,7 @@ export class SubmissionService {
   changeMaxData(max: Event, ReelMax: Number, minData: Number): Boolean {
     if (ReelMax == 0) { ReelMax = 1 }
 
-    if (Number(max) > Number(ReelMax) || Number(max) < minData) {
+    if (Number(max) > Number(ReelMax) || Number(max) < Number(minData)) {
       return true
     }
     return false

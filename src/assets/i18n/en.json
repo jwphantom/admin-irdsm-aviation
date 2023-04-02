@@ -8,7 +8,8 @@
         "formation": "Training",
         "logout" : "Sign Out",
         "login" : "Sign In",
-        "statistics" : "Statistics"
+        "statistics" : "Statistics",
+        "competition": "Competitions"
     },
     "footer": {
         "title": "Civil Aviation Training",

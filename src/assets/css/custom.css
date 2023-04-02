@@ -6,3 +6,33 @@
  <link href="css/custom.css" rel="stylesheet">
 
 */
+
+.windowsCustom {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.flex-container > div {
+    text-align: center;
+    line-height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-container .title {
+    flex-grow: 9;
+    text-align: left;
+}
+
+.flex-container .action {
+    flex-grow: 1;
+}

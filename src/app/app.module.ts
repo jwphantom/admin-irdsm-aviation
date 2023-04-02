@@ -24,7 +24,6 @@ import { SignInComponent } from './pages/auth/sign-in/sign-in.component';
 //component
 import { HomeComponent } from './pages/home/home.component';
 import { LocaleService } from './services/locale/locale.service';
-import { HeaderComponent } from './static/header/header.component';
 import { PartnerComponent } from './static/partner/partner.component';
 import { FooterComponent } from './static/footer/footer.component';
 import { MenuComponent } from './static/menu/menu.component';
@@ -69,8 +68,13 @@ import { CenterChartComponent } from './components/chart/center-chart/center-cha
 import { LastSubmissionChartComponent } from './components/chart/last-submission-chart/last-submission-chart.component';
 import { TokenService } from './services/token/token.service';
 import { AuthService } from './services/auth/auth.service';
+import { CompetitionsComponent } from './pages/competitions/competitions.component';
+import { CompetitionService } from './services/competition/competition.service';
+import { DayService } from './services/chart/day.service';
 
 
+//toast
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -78,7 +82,6 @@ import { AuthService } from './services/auth/auth.service';
     AppComponent,
     SignInComponent,
     HomeComponent,
-    HeaderComponent,
     PartnerComponent,
     FooterComponent,
     MenuComponent,
@@ -92,6 +95,7 @@ import { AuthService } from './services/auth/auth.service';
     SexChartComponent,
     CenterChartComponent,
     LastSubmissionChartComponent,
+    CompetitionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,7 +120,8 @@ import { AuthService } from './services/auth/auth.service';
       }
     }),
     FontAwesomeModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    ToastrModule
 
   ],
   providers: [
@@ -131,7 +136,8 @@ import { AuthService } from './services/auth/auth.service';
     ExportService,
     LoadScript,
     TokenService,
-    LoadScript],
+    LoadScript,
+    CompetitionService],
   bootstrap: [AppComponent,
   ]
 })

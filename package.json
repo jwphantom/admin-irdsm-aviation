@@ -43,6 +43,7 @@
     "jspdf": "^2.5.1",
     "ng2-charts": "^3.0.0",
     "ngx-skeleton-loader": "^6.0.0",
+    "ngx-toastr": "^16.1.0",
     "path": "^0.12.7",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
