@@ -36,3 +36,8 @@
 .flex-container .action {
     flex-grow: 1;
 }
+
+#submissionTable2 td,
+th {
+    width: 10%;
+}

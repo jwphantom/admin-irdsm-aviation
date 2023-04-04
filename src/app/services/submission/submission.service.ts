@@ -29,7 +29,6 @@ export class SubmissionService {
 
 
   async getList(dateC: String) {
-
     this.http
       .get<any[]>(`${GlobalConstants.apiURL}/submission/list/${dateC}`, this.token.getHeader())
       .subscribe(

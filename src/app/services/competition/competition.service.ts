@@ -41,16 +41,45 @@ export class CompetitionService {
 
   async addList(form: Competition) {
     this.http
-      .post<any[]>(`${GlobalConstants.apiURL}/competition/add-competition`, form)
+      .post<any[]>(`${GlobalConstants.apiURL}/competition/add-competition`, form, this.token.getHeader())
       .subscribe(
         (response) => {
           this.toastr.success('La date a bien été enregistrée', 'Succès');
+          this.competition.push(form)
 
         },
         (error) => {
           console.log('Erreur ! : ' + error);
+          this.toastr.error('Impossible d\'ajouter cette date ', 'Echec');
+
         }
       );
+
+  }
+
+  async deleteCompetition(id: string | undefined) {
+
+    const index = this.competition.findIndex(element => element._id === id);
+    if (id) {
+      this.http
+        .delete<any[]>(`${GlobalConstants.apiURL}/competition/delete-competition/${id}`, this.token.getHeader())
+        .subscribe(
+          (response) => {
+            this.toastr.success('Date de concours supprimé', 'Succès');
+
+            if (index !== -1) {
+              // Suppression de l'élément du tableau
+              this.competition.splice(index, 1);
+            }
+
+          },
+          (error) => {
+            console.log('Erreur ! : ' + error);
+            this.toastr.error('Impossible de supprimer cette date ', 'Echec');
+
+          }
+        );
+    }
 
   }
 

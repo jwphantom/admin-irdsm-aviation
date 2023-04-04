@@ -136,13 +136,6 @@ export class ProgramsService {
     {
       code: "BEPC",
       name: "BEPC ou Equivalent",
-    }, {
-      code: "140123",
-      name: "Concours du 14 Janvier 2023",
-    },
-    {
-      code: "110323",
-      name: "Concours du 11 Mars 2023",
     }
   ];
 

@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-#flash_message_success{
+#flash_message_success {
     display: none; /* Hidden by default. Visible on click */
     width: 96%; /* Set a default minimum width */
     margin-left: 2%; /* Divide value of min-width by 2 */
@@ -35,7 +35,6 @@
     position: fixed; /* Sit on top of the screen */
     z-index: 1000; /* Add a z-index if needed */ /* Center the snackbar */
     top: 30px; /* 30px from the bottom */
-
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
@@ -46,5 +45,11 @@
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

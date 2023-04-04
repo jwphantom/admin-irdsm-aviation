@@ -5,6 +5,8 @@ import { SubmissionService } from 'src/app/services/submission/submission.servic
 import { ProgramsService } from 'src/app/services/submission/programs.service';
 import { Observable, Subscription, take } from 'rxjs';
 import { Submission } from 'src/app/models/submission';
+import { CompetitionService } from 'src/app/services/competition/competition.service';
+import { Competition } from 'src/app/models/competition';
 
 @Component({
   selector: 'app-chart',
@@ -17,7 +19,8 @@ export class ChartComponent implements OnInit {
   constructor(public loadScript: LoadScript,
     private title: Title,
     private submission: SubmissionService,
-    private programs: ProgramsService) { }
+    private programs: ProgramsService,
+    public competitionService: CompetitionService) { }
 
   selectConcours: any;
 
@@ -34,6 +37,10 @@ export class ChartComponent implements OnInit {
 
   loader: Boolean = true
 
+  competition: Competition[] = []
+  competitionSuscription: Subscription | undefined
+
+
 
 
   ngOnInit() {
@@ -44,6 +51,8 @@ export class ChartComponent implements OnInit {
     this.selectConcours = this.listConcours?.[this.listConcours.length - 1].name
 
     this.storeAdmission()
+
+    this.storeCompetition()
 
     this.submission.getList(this.selectConcours);
 
@@ -56,7 +65,18 @@ export class ChartComponent implements OnInit {
     this.submissionSubscription = this.submission.submissionSubject.subscribe(
       (submission: Submission[]) => {
         this.subAll = submission;
-        // console.log(this.subAll)
+      }
+    );
+  }
+
+  storeCompetition() {
+    this.competitionService.getList()
+    this.competitionSuscription = this.competitionService.competitionSubject.subscribe(
+      (competition: Competition[]) => {
+        this.competition = competition;
+        this.listConcours = this.competition
+        this.submission.getList(this.listConcours?.[this.listConcours.length - 1].name);
+        this.selectConcours = this.listConcours?.[this.listConcours.length - 1].name
 
       }
     );

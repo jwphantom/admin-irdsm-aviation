@@ -32,7 +32,7 @@
                 <h4>Réponses aux formulaires ({{subAll.length}}) </h4>
                 <select (ngModelChange)="changeDateconcours($event)" [(ngModel)]="selectConcours">
                     <option value="all">Tous les concours </option>
-                    <option *ngFor="let l of listConcours" value="{{l.name}}">{{ l.name }}
+                    <option *ngFor="let l of competition" value="{{l.name}}">{{ l.name }}
                     </option>
                 </select>
                 <br><br>

@@ -34,7 +34,9 @@
                         <h4>Listes des compétitions</h4>
                     </div>
                     <div class="action">
-                        <button class="btn btn-b" data-dismiss="modal">Ajouter</button>
+                        <button *ngIf="addButton" (click)="addButton=false" class="btn btn-b">Ajouter</button>
+                        <button *ngIf="!addButton" (click)="addButton=true" class="btn btn-warning">Fermer</button>
+
                     </div>
                 </div>
 
@@ -42,8 +44,9 @@
         </div>
 
 
-        <br>
-        <div class="container">
+
+        <div *ngIf="!addButton" class="container">
+            <br>
             <div class="card-deck">
 
                 <div class="card">
@@ -53,9 +56,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="far fa-calendar"></i></span>
                             </div>
-                            <input type="date" class="form-control" min="{{today | date:'yyyy-MM-dd'}}"
-                                [(ngModel)]="dateSelect" (change)="selectDateCompetition()" placeholder="Username"
-                                aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="date" class="form-control" [(ngModel)]="dateSelect"
+                                (change)="selectDateCompetition()" placeholder="Username" aria-label="Username"
+                                aria-describedby="basic-addon1">
                         </div>
                         <div style="text-align: right;">
                             <button (click)="saveDateCompetition()" [disabled]="!dateSelect"
@@ -71,6 +74,45 @@
 
             </div>
         </div>
+
+        <br>
+        <div class="container">
+            <div class="card-deck">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Listes des concours</h5>
+
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Code</th>
+                                    <th scope="col">Name</th>
+                                    <!-- <th scope="col">Delete</th> -->
+
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let comp of competition let i = index">
+                                    <td>{{ i }} </td>
+                                    <td>{{ comp.code }}</td>
+                                    <td>{{ comp.name }}</td>
+                                    <!-- <td><button (click)="deleteCompetition(comp._id)"
+                                            class="btn btn-warning">Supprimer</button></td> -->
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
 
 
     </section>

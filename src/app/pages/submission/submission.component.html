@@ -33,7 +33,7 @@
                     <h4>Réponses aux formulaires ({{dataSource.filteredData.length}}) </h4>
                     <select (ngModelChange)="changeDateconcours($event)" [(ngModel)]="selectConcours">
                         <option value="all">Tous les concours </option>
-                        <option *ngFor="let l of listConcours" value="{{l.name}}">{{ l.name }}
+                        <option *ngFor="let l of competition" value="{{l.name}}">{{ l.name }}
                         </option>
                     </select>
                     <br><br>
@@ -121,7 +121,7 @@
 
 
 
-                        <table style="display: none;" class="table" #submissionTable>
+                        <table style="display: none;" class="table" id="submissionTable2" #submissionTable>
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">#</th>
@@ -152,6 +152,8 @@
                                 </tr>
                             </tbody>
                         </table>
+
+
 
                     </div>
 

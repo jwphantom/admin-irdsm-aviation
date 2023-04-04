@@ -76,6 +76,9 @@ import { DayService } from './services/chart/day.service';
 //toast
 import { ToastrModule } from 'ngx-toastr';
 
+//pdf service
+import { PdfService } from './services/pdf/pdf.service';
+
 
 @NgModule({
   declarations: [
@@ -121,7 +124,12 @@ import { ToastrModule } from 'ngx-toastr';
     }),
     FontAwesomeModule,
     NgxSkeletonLoaderModule,
-    ToastrModule
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+    })
+
 
   ],
   providers: [
@@ -137,6 +145,7 @@ import { ToastrModule } from 'ngx-toastr';
     LoadScript,
     TokenService,
     LoadScript,
+    PdfService,
     CompetitionService],
   bootstrap: [AppComponent,
   ]

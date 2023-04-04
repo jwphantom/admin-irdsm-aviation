@@ -13,10 +13,15 @@ import { ExportService } from 'src/app/services/submission/export.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as $ from 'jquery';
 import { LoadScript } from 'src/app/services/script/loadScript.service';
+import { Competition } from 'src/app/models/competition';
+import { CompetitionService } from 'src/app/services/competition/competition.service';
 
 
 const EXCEL_EXTENSION = '.xlsx';
 
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
+import { PdfService } from 'src/app/services/pdf/pdf.service';
 
 @Component({
   selector: 'app-submission',
@@ -25,6 +30,8 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 export class SubmissionComponent implements OnInit {
 
+  competition: Competition[] = []
+  competitionSuscription: Subscription | undefined
 
 
   sub: Submission[] = []
@@ -68,6 +75,9 @@ export class SubmissionComponent implements OnInit {
     private exportService: ExportService,
     private formBuilder: FormBuilder,
     public loadScript: LoadScript,
+    public competitionService: CompetitionService,
+    public pdfService: PdfService
+
 
   ) { }
 
@@ -78,11 +88,7 @@ export class SubmissionComponent implements OnInit {
 
     this.storeAdmission()
 
-    this.listConcours = this.programs.listConcours
-
-    this.submission.getList(this.listConcours?.[this.listConcours.length - 1].name);
-
-    this.selectConcours = this.listConcours?.[this.listConcours.length - 1].name
+    this.storeCompetition()
 
     this.loadScript.loadJS();
 
@@ -118,6 +124,19 @@ export class SubmissionComponent implements OnInit {
     this.submission.emitsubmission();
   }
 
+  storeCompetition() {
+    this.competitionService.getList()
+    this.competitionSuscription = this.competitionService.competitionSubject.subscribe(
+      (competition: Competition[]) => {
+        this.competition = competition;
+        this.listConcours = this.competition
+        this.submission.getList(this.listConcours?.[this.listConcours.length - 1].name);
+        this.selectConcours = this.listConcours?.[this.listConcours.length - 1].name
+
+      }
+    );
+  }
+
   changeDateconcours(date: String) {
     this.submission.getList(date);
   }
@@ -137,8 +156,6 @@ export class SubmissionComponent implements OnInit {
     let mininum = this.rangeDataForm.get('min')?.value
     let maximum = this.rangeDataForm.get('max')?.value
 
-    console.log(maximum)
-
     localStorage.setItem('maximum', JSON.stringify(maximum))
 
     let current_date = this.datePipe.transform(new Date(), 'yyyy-MM-dd')
@@ -149,7 +166,8 @@ export class SubmissionComponent implements OnInit {
     this.sub = submission;
     this.compteur = mininum;
     setTimeout(() => {
-      this.exportService.exportTableElmToExcel(this.submissionTable, 'Réponses aux formulaire-' + current_date);
+      //this.exportService.exportTableElmToExcel(this.submissionTable, 'Réponses aux formulaire-' + current_date);
+      this.pdfService.generatePdf(this.sub, current_date)
     }, 2000)
 
   }
@@ -161,7 +179,5 @@ export class SubmissionComponent implements OnInit {
   changeMaxData(max: Event, ReelMax: Number) {
     this.overMax = this.submission.changeMinData(max, ReelMax)
   }
-
-
 
 }
