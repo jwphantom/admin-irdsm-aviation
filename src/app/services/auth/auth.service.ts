@@ -15,7 +15,6 @@ export class AuthService {
 
   private baseUrl = GlobalConstants.apiURL;
 
-
   userData: any; // Save logged in user data
 
 
@@ -49,19 +48,22 @@ export class AuthService {
 
   SignIn(email: string, password: string) {
 
-
+    $('#waitLogin').show();
+    $("#submitLogin").hide();
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
 
-        // localStorage.setItem('user', JSON.stringify(result.user));
+        localStorage.setItem('user', JSON.stringify(result.user));
 
         this.StoreToken(result);
 
-        //this.router.navigate(['']);
+        this.router.navigate(['']);
 
       })
       .catch((error) => {
+        $('#submitLogin').show()
+        $("#waitLogin").hide();
         window.alert(error.message);
       });
   }
@@ -91,7 +93,6 @@ export class AuthService {
       .post<any[]>(`${GlobalConstants.apiURL}/user/sign-in`, { email: this.getUser().email })
       .subscribe(
         async (res: any) => {
-          console.log("ok")
           await localStorage.setItem("ACCESS_TOKEN", res['token']);
           await localStorage.setItem("userId", res['userId']);
           await localStorage.setItem('user', JSON.stringify(result.user));

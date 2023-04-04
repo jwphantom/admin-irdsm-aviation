@@ -24,9 +24,11 @@
                                 <input type="password" class="form-control" placeholder="Password" #password>
                             </div>
 
-                            <div class="text-left form-group">
-                                <button (click)="login(email.value, password.value)" type="button"
+                            <div class="text-right form-group">
+                                <button id="submitLogin" (click)="login(email.value, password.value)" type="button"
                                     class="btn">Login</button>
+                                <button style="display: none ;" [disabled]="true" id="waitLogin" type="button"
+                                    class="btn">Patientez...</button>
 
                             </div>
                         </form>
