@@ -152,7 +152,7 @@ export class SubmissionComponent implements OnInit {
     return JSON.parse(JSON.stringify(submission))
   }
 
-  submitRange() {
+  submitRange(typeButton: string) {
     let mininum = this.rangeDataForm.get('min')?.value
     let maximum = this.rangeDataForm.get('max')?.value
 
@@ -165,9 +165,14 @@ export class SubmissionComponent implements OnInit {
 
     this.sub = submission;
     this.compteur = mininum;
+
     setTimeout(() => {
-      //this.exportService.exportTableElmToExcel(this.submissionTable, 'Réponses aux formulaire-' + current_date);
-      this.pdfService.generatePdf(this.sub, current_date)
+      if (typeButton == 'XLS') {
+        this.exportService.exportTableElmToExcel(this.submissionTable, 'Réponses aux formulaire-' + current_date);
+      }
+      if (typeButton == 'PDF') {
+        this.pdfService.generatePdf(this.sub, current_date)
+      }
     }, 2000)
 
   }
