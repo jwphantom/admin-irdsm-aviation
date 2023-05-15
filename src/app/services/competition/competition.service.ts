@@ -25,7 +25,7 @@ export class CompetitionService {
   async getList() {
 
     this.http
-      .get<any[]>(`${GlobalConstants.apiURL}/competition/list`, this.token.getHeader())
+      .get<any[]>(`${GlobalConstants.apiURL}/competition/list`)
       .subscribe(
         (response) => {
           this.competition = response;
